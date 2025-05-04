@@ -1,6 +1,6 @@
 
 import React from "react";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, House, Building, SprayCan, Garage } from "lucide-react";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -17,10 +17,18 @@ const Footer = () => {
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <div className="grid grid-cols-2 gap-0.5 border-2 border-white p-1 w-8 h-8">
-                <div className="bg-white"></div>
-                <div className="bg-white"></div>
-                <div className="bg-white"></div>
-                <div className="bg-white"></div>
+                <div className="bg-white flex items-center justify-center">
+                  <House size={14} className="text-brand-gray" />
+                </div>
+                <div className="bg-white flex items-center justify-center">
+                  <SprayCan size={14} className="text-brand-gray" />
+                </div>
+                <div className="bg-white flex items-center justify-center">
+                  <Building size={14} className="text-brand-gray" />
+                </div>
+                <div className="bg-white flex items-center justify-center">
+                  <Garage size={14} className="text-brand-gray" />
+                </div>
               </div>
               <span className="text-xl font-bold text-white">WashUp</span>
             </div>

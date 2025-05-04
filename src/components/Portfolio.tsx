@@ -6,33 +6,33 @@ import { ArrowRight } from "lucide-react";
 const portfolioImages = [
   {
     src: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3",
-    alt: "Чистая современная гостиная после уборки",
+    alt: "Уборка квартиры после генеральной уборки",
     category: "Жилые помещения"
   },
   {
     src: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3",
-    alt: "Уборка офисного помещения",
-    category: "Офисы"
+    alt: "Клининг офисного пространства",
+    category: "Бизнес-помещения"
   },
   {
     src: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?ixlib=rb-4.0.3",
-    alt: "Чистая кухня после генеральной уборки",
+    alt: "Чистая кухня после профессиональной уборки",
     category: "Кухни"
   },
   {
     src: "https://images.unsplash.com/photo-1584622781564-1d987f7333c1?ixlib=rb-4.0.3",
-    alt: "Ванная комната после уборки",
+    alt: "Санузел после дезинфицирующей уборки",
     category: "Санузлы"
   },
   {
     src: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3",
-    alt: "Чистый диван после химчистки",
+    alt: "Химчистка мягкой мебели",
     category: "Химчистка"
   },
   {
     src: "https://images.unsplash.com/photo-1595846519845-68e298c2edd8?ixlib=rb-4.0.3",
-    alt: "Мытье окон в высотном здании",
-    category: "Окна"
+    alt: "Мытьё окон и фасадов",
+    category: "Окна и фасады"
   }
 ];
 

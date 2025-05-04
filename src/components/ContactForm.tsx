@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Check, MessagesSquare, Send } from "lucide-react";
+import { Check, MessageCircle, MessagesSquare, Send } from "lucide-react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/hooks/use-toast";
@@ -37,13 +37,19 @@ const ContactForm = () => {
   const onSubmit = (data) => {
     console.log("Отправка формы:", data);
     
-    // Имитация отправки данных на сервер
+    // Имитация отправки данных в Telegram
     setTimeout(() => {
       toast({
         title: "Заявка отправлена!",
         description: "Мы свяжемся с вами в ближайшее время",
-        variant: "success"
+        // Исправляем тип с "success" на "default"
+        variant: "default" 
       });
+      
+      // В реальном приложении здесь может быть логика отправки данных в Telegram
+      // Например, можно использовать URL схему для открытия Telegram
+      // window.open(`https://t.me/+79209500808?text=${encodeURIComponent(`Новая заявка: ${JSON.stringify(data)}`)}`, '_blank');
+      
       form.reset();
     }, 1000);
   };

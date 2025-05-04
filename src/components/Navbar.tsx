@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, MessageCircle, MessagesSquare, Send } from "lucide-react";
+import { Menu, X, MessageCircle, MessagesSquare, Send, House, Building, SprayCan, Garage } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,12 +11,20 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <div className="flex items-center gap-2">
-            {/* Логотип WashUp с иконками из бренд-бука */}
+            {/* Обновленный логотип WashUp с иконками из бренд-бука */}
             <div className="grid grid-cols-2 gap-0.5 border-2 border-brand-gray p-1 w-10 h-10">
-              <div className="bg-brand-gray"></div>
-              <div className="bg-brand-gray"></div>
-              <div className="bg-brand-gray"></div>
-              <div className="bg-brand-gray"></div>
+              <div className="bg-white flex items-center justify-center">
+                <House size={16} className="text-brand-gray" />
+              </div>
+              <div className="bg-white flex items-center justify-center">
+                <SprayCan size={16} className="text-brand-gray" />
+              </div>
+              <div className="bg-white flex items-center justify-center">
+                <Building size={16} className="text-brand-gray" />
+              </div>
+              <div className="bg-white flex items-center justify-center">
+                <Garage size={16} className="text-brand-gray" />
+              </div>
             </div>
             <span className="text-xl font-bold">WashUp</span>
           </div>
