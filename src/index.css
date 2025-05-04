@@ -69,11 +69,11 @@
 @layer components {
   /* Стиль кнопок в стиле Apple, но с цветами бренда */
   .btn-primary {
-    @apply bg-brand-green hover:bg-brand-green/90 text-white px-6 py-3 rounded-lg font-medium transition-all;
+    @apply bg-brand-green hover:bg-brand-green/90 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg;
   }
   
   .btn-secondary {
-    @apply border-2 border-brand-beige hover:bg-brand-beige/10 px-6 py-3 rounded-lg font-medium transition-all;
+    @apply border-2 border-brand-beige hover:bg-brand-beige/10 px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg;
   }
   
   .hero-gradient {
@@ -82,6 +82,44 @@
 
   /* Apple-подобные карточки услуг */
   .service-card {
-    @apply bg-white shadow-lg rounded-2xl p-6 hover:shadow-xl transition-all duration-300;
+    @apply bg-white shadow-lg rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1;
+  }
+
+  /* Анимация для кнопок и интерактивных элементов */
+  .btn-hover-effect {
+    @apply relative overflow-hidden;
+  }
+  
+  .btn-hover-effect:after {
+    @apply content-[''] absolute w-full h-full top-0 left-0 bg-white/20 transform scale-x-0 transition-transform origin-right duration-300 ease-out;
+  }
+  
+  .btn-hover-effect:hover:after {
+    @apply scale-x-100 origin-left;
+  }
+  
+  /* Анимация пульсации для привлечения внимания */
+  .pulse-animation {
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(168, 104, 186, 0.4);
+    }
+    70% {
+      transform: scale(1.05);
+      box-shadow: 0 0 0 10px rgba(168, 104, 186, 0);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(168, 104, 186, 0);
+    }
+  }
+  
+  /* Анимация для социальных сетей */
+  .social-icon-hover {
+    @apply transition-transform duration-300 hover:scale-110 hover:rotate-6;
   }
 }

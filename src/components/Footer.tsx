@@ -44,9 +44,9 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-medium mb-4">Контакты</h4>
             <ul className="space-y-2">
-              <li className="text-brand-beige/80">+7 (999) 123-45-67</li>
+              <li className="text-brand-beige/80">8 920 950 08 08</li>
               <li className="text-brand-beige/80">info@washup.ru</li>
-              <li className="text-brand-beige/80">г. Москва, ул. Чистая, д. 10</li>
+              <li className="text-brand-beige/80">г. Рязань, ул. Чистая, д. 10</li>
             </ul>
           </div>
         </div>
@@ -58,7 +58,7 @@ const Footer = () => {
           
           <button 
             onClick={scrollToTop}
-            className="flex items-center gap-2 text-white bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full mt-4 md:mt-0 transition-colors"
+            className="flex items-center gap-2 text-white bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full mt-4 md:mt-0 transition-all duration-300 hover:scale-105"
           >
             Наверх <ArrowUp size={16} />
           </button>

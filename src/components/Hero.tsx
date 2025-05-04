@@ -15,13 +15,19 @@ const Hero = () => {
               Профессиональная экологичная уборка для вашего дома, офиса или коммерческого помещения. Минималистичный подход — максимальная чистота.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button className="btn-primary">Рассчитать стоимость</Button>
-              <Button className="btn-secondary">Узнать больше</Button>
+              <Button className="btn-primary btn-hover-effect group">
+                Рассчитать стоимость
+                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </Button>
+              <Button className="btn-secondary group">
+                Узнать больше
+                <span className="inline-block transition-transform duration-300 group-hover:translate-y-1">↓</span>
+              </Button>
             </div>
           </div>
           <div className="relative h-64 md:h-auto animate-fade-in" style={{ animationDelay: "0.2s" }}>
             <div className="absolute top-0 right-0 w-full h-full">
-              <div className="grid grid-cols-2 gap-1 w-64 h-64 md:w-80 md:h-80 mx-auto border-4 border-brand-gray p-2">
+              <div className="grid grid-cols-2 gap-1 w-64 h-64 md:w-80 md:h-80 mx-auto border-4 border-brand-gray p-2 transition-all duration-500 hover:rotate-2">
                 <div className="bg-brand-green/20 rounded"></div>
                 <div className="bg-brand-beige/40 rounded flex items-center justify-center">
                   <div className="w-10 h-10 bg-brand-gray"></div>

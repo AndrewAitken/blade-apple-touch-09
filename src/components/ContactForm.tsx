@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, MessageCircle, Telegram, WhatsApp } from "lucide-react";
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -22,8 +22,8 @@ const ContactForm = () => {
     {
       icon: Phone,
       title: "Телефон",
-      value: "+7 (999) 123-45-67",
-      link: "tel:+79991234567"
+      value: "8 920 950 08 08",
+      link: "tel:+79209500808"
     },
     {
       icon: Mail,
@@ -34,7 +34,7 @@ const ContactForm = () => {
     {
       icon: MapPin,
       title: "Адрес",
-      value: "г. Москва, ул. Чистая, д. 10",
+      value: "г. Рязань, ул. Чистая, д. 10",
       link: "#"
     },
     {
@@ -53,6 +53,28 @@ const ContactForm = () => {
           <p className="text-lg text-brand-gray/80 max-w-2xl mx-auto">
             Оставьте заявку, и мы свяжемся с вами для расчета стоимости и обсуждения деталей
           </p>
+          
+          {/* Быстрые действия - кнопки связи */}
+          <div className="flex flex-wrap justify-center gap-4 mt-8">
+            <a 
+              href="https://wa.me/79209500808" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 shadow-md"
+            >
+              <WhatsApp size={24} />
+              Написать в WhatsApp
+            </a>
+            <a 
+              href="https://t.me/+79209500808" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-[#0088cc] text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 shadow-md"
+            >
+              <Telegram size={24} />
+              Написать в Telegram
+            </a>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -107,9 +129,10 @@ const ContactForm = () => {
                   className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
                 >
                   <option value="" disabled selected>Выберите услугу</option>
-                  <option value="basic">Базовая уборка</option>
+                  <option value="regular">Поддерживающая уборка</option>
                   <option value="general">Генеральная уборка</option>
-                  <option value="premium">Премиум уборка</option>
+                  <option value="renovation">Уборка после ремонта</option>
+                  <option value="moving">Уборка при переезде</option>
                   <option value="office">Уборка офиса</option>
                   <option value="commercial">Коммерческая уборка</option>
                   <option value="other">Другое</option>
@@ -128,7 +151,10 @@ const ContactForm = () => {
                 />
               </div>
               
-              <Button type="submit" className="btn-primary w-full">
+              <Button 
+                type="submit" 
+                className="btn-primary w-full transition-all duration-300 hover:scale-105"
+              >
                 Отправить заявку
               </Button>
             </form>
@@ -145,7 +171,7 @@ const ContactForm = () => {
                     href={item.link}
                     className="flex items-start gap-4 group"
                   >
-                    <div className="w-12 h-12 bg-brand-green/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-12 h-12 bg-brand-green/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1 transition-all group-hover:bg-brand-green/40">
                       <item.icon size={20} className="text-brand-green" />
                     </div>
                     <div>
@@ -161,7 +187,7 @@ const ContactForm = () => {
               <div className="mt-12">
                 <h4 className="text-lg font-medium mb-4">Мы в социальных сетях</h4>
                 <div className="flex gap-4">
-                  <a href="#" className="w-10 h-10 bg-brand-beige/30 rounded-full flex items-center justify-center hover:bg-brand-green/30 transition-colors">
+                  <a href="#" className="w-10 h-10 bg-brand-beige/30 rounded-full flex items-center justify-center hover:bg-brand-green/30 transition-colors hover:scale-110 transition-transform duration-300">
                     <span className="sr-only">Instagram</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
@@ -169,14 +195,14 @@ const ContactForm = () => {
                       <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
                     </svg>
                   </a>
-                  <a href="#" className="w-10 h-10 bg-brand-beige/30 rounded-full flex items-center justify-center hover:bg-brand-green/30 transition-colors">
+                  <a href="https://t.me/+79209500808" className="w-10 h-10 bg-brand-beige/30 rounded-full flex items-center justify-center hover:bg-brand-green/30 transition-colors hover:scale-110 transition-transform duration-300">
                     <span className="sr-only">Telegram</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="m22 2-7 20-4-9-9-4 20-7Z"></path>
                       <path d="M22 2 11 13"></path>
                     </svg>
                   </a>
-                  <a href="#" className="w-10 h-10 bg-brand-beige/30 rounded-full flex items-center justify-center hover:bg-brand-green/30 transition-colors">
+                  <a href="https://wa.me/79209500808" className="w-10 h-10 bg-brand-beige/30 rounded-full flex items-center justify-center hover:bg-brand-green/30 transition-colors hover:scale-110 transition-transform duration-300">
                     <span className="sr-only">WhatsApp</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M17.6 6.8A7.8 7.8 0 1 0 5.4 15L4 20l5-1.2a7.8 7.8 0 0 0 8.6-12Z"></path>
