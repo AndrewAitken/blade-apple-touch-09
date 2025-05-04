@@ -1,6 +1,5 @@
-
 import React from "react";
-import { ArrowUp, House, Building, SprayCan, Garage } from "lucide-react";
+import { ArrowUp, House, Building, SprayCan, Building2 } from "lucide-react";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -27,7 +26,7 @@ const Footer = () => {
                   <Building size={14} className="text-brand-gray" />
                 </div>
                 <div className="bg-white flex items-center justify-center">
-                  <Garage size={14} className="text-brand-gray" />
+                  <Building2 size={14} className="text-brand-gray" />
                 </div>
               </div>
               <span className="text-xl font-bold text-white">WashUp</span>

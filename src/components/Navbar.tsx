@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, MessageCircle, MessagesSquare, Send, House, Building, SprayCan, Garage } from "lucide-react";
+import { Menu, X, MessageCircle, MessagesSquare, Send, House, Building, SprayCan, Building2 } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +23,7 @@ const Navbar = () => {
                 <Building size={16} className="text-brand-gray" />
               </div>
               <div className="bg-white flex items-center justify-center">
-                <Garage size={16} className="text-brand-gray" />
+                <Building2 size={16} className="text-brand-gray" />
               </div>
             </div>
             <span className="text-xl font-bold">WashUp</span>
