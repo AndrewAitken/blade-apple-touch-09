@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, MessageCircle, Telegram, WhatsApp } from "lucide-react";
+import { Menu, X, MessageCircle, MessagesSquare, Send } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,7 +40,7 @@ const Navbar = () => {
             className="w-10 h-10 bg-[#25D366]/10 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#25D366] hover:text-white hover:scale-110"
             aria-label="WhatsApp"
           >
-            <WhatsApp size={20} />
+            <MessagesSquare size={20} />
           </a>
           <a 
             href="https://t.me/+79209500808" 
@@ -49,7 +49,7 @@ const Navbar = () => {
             className="w-10 h-10 bg-[#0088cc]/10 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#0088cc] hover:text-white hover:scale-110"
             aria-label="Telegram"
           >
-            <Telegram size={20} />
+            <Send size={20} />
           </a>
           <Button className="btn-primary ml-2">
             <span className="hidden sm:inline">Заказать уборку</span>
@@ -84,7 +84,7 @@ const Navbar = () => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 bg-[#25D366]/10 rounded-lg text-sm hover:bg-[#25D366] hover:text-white transition-colors"
               >
-                <WhatsApp size={18} /> WhatsApp
+                <MessagesSquare size={18} /> WhatsApp
               </a>
               <a 
                 href="https://t.me/+79209500808" 
@@ -92,7 +92,7 @@ const Navbar = () => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 bg-[#0088cc]/10 rounded-lg text-sm hover:bg-[#0088cc] hover:text-white transition-colors"
               >
-                <Telegram size={18} /> Telegram
+                <Send size={18} /> Telegram
               </a>
             </div>
             
