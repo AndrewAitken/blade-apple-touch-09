@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Shimmer } from "@/components/ui/skeleton";
 
 type CleaningType = 'regular' | 'general' | 'renovation' | 'moving';
 
@@ -171,9 +172,11 @@ const Pricing = () => {
         </div>
         
         <div className="mt-12 text-center">
-          <Button className="btn-primary animate-pulse hover:animate-none transition-all duration-300 hover:scale-105">
-            Получить расчет стоимости
-          </Button>
+          <Shimmer className="inline-block">
+            <Button className="btn-primary hover:scale-105 transition-all duration-300">
+              Получить расчет стоимости
+            </Button>
+          </Shimmer>
         </div>
       </div>
     </section>
