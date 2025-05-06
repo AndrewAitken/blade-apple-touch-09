@@ -4,6 +4,14 @@ import { Button } from "@/components/ui/button";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const Hero = () => {
+  const scrollToNextSection = () => {
+    // Scroll to the services section which is likely the next section after Hero
+    const servicesSection = document.getElementById("services");
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="relative overflow-hidden py-20 md:py-32">
       {/* Используем новое изображение офисного пространства как фон */}
@@ -40,9 +48,11 @@ const Hero = () => {
                 Рассчитать стоимость
                 <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
               </Button>
-              <Button className="btn-secondary group bg-white/10 border-white text-white hover:bg-white/20">
+              <Button 
+                className="btn-secondary group bg-white/10 border-white text-white hover:bg-white/20"
+                onClick={scrollToNextSection}
+              >
                 Узнать больше
-                <span className="inline-block transition-transform duration-300 group-hover:translate-y-1">↓</span>
               </Button>
             </div>
           </div>
