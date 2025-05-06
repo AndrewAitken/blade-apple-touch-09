@@ -172,8 +172,8 @@ const Pricing = () => {
         </div>
         
         <div className="mt-12 text-center">
-          <div className="p-2">
-            <Shimmer className="inline-block">
+          <div className="p-4 inline-block">
+            <Shimmer className="inline-block overflow-visible">
               <Button className="btn-primary hover:scale-105 transition-all duration-300">
                 Получить расчет стоимости
               </Button>
