@@ -1,8 +1,10 @@
+
 import React, { useState } from "react";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Shimmer } from "@/components/ui/skeleton";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 type CleaningType = 'regular' | 'general' | 'renovation' | 'moving';
 
@@ -82,23 +84,24 @@ const Pricing = () => {
           </p>
         </div>
 
-        {/* Табы выбора типа уборки */}
-        <div className="flex flex-wrap gap-2 justify-center mb-8">
-          {cleaningTypes.map((type) => (
-            <Button
-              key={type.id}
-              onClick={() => setSelectedTab(type.id as CleaningType)}
-              variant={selectedTab === type.id ? "default" : "outline"}
-              className={`transition-all duration-300 ${
-                selectedTab === type.id
-                  ? "bg-brand-green text-white"
-                  : "hover:bg-brand-beige/20"
-              }`}
-            >
-              {type.name}
-            </Button>
-          ))}
-        </div>
+        {/* Заменяем кнопки на табы */}
+        <Tabs 
+          value={selectedTab} 
+          onValueChange={(value: CleaningType) => setSelectedTab(value)}
+          className="w-full mb-8"
+        >
+          <TabsList className="w-full grid grid-cols-2 md:grid-cols-4 gap-1">
+            {cleaningTypes.map((type) => (
+              <TabsTrigger 
+                key={type.id} 
+                value={type.id}
+                className="py-3"
+              >
+                {type.name}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </Tabs>
 
         {/* Описание выбранного типа уборки */}
         <div className="bg-white p-4 rounded-lg mb-8 text-center animate-fade-in">
