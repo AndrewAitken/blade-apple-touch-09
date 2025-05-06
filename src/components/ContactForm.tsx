@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -9,7 +8,6 @@ import { Check, MessageCircle, MessagesSquare, Send } from "lucide-react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/hooks/use-toast";
-
 const formSchema = z.object({
   name: z.string().min(2, "Имя должно содержать не менее 2 символов"),
   phone: z.string().min(10, "Введите корректный номер телефона"),
@@ -19,10 +17,10 @@ const formSchema = z.object({
     message: "Необходимо согласиться с условиями"
   })
 });
-
 const ContactForm = () => {
-  const { toast } = useToast();
-  
+  const {
+    toast
+  } = useToast();
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -33,29 +31,26 @@ const ContactForm = () => {
       agreement: false
     }
   });
-
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     console.log("Отправка формы:", data);
-    
+
     // Имитация отправки данных в Telegram
     setTimeout(() => {
       toast({
         title: "Заявка отправлена!",
         description: "Мы свяжемся с вами в ближайшее время",
         // Исправляем тип с "success" на "default"
-        variant: "default" 
+        variant: "default"
       });
-      
+
       // В реальном приложении здесь может быть логика отправки данных в Telegram
       // Например, можно использовать URL схему для открытия Telegram
       // window.open(`https://t.me/+79209500808?text=${encodeURIComponent(`Новая заявка: ${JSON.stringify(data)}`)}`, '_blank');
-      
+
       form.reset();
     }, 1000);
   };
-
-  return (
-    <section id="contact" className="section bg-brand-beige/20">
+  return <section id="contact" className="section bg-brand-beige/20">
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Связаться с нами</h2>
@@ -77,12 +72,12 @@ const ContactForm = () => {
               
               <div>
                 <h4 className="font-semibold mb-2">Email:</h4>
-                <p className="text-lg">info@washup.ru</p>
+                <p className="text-lg"> info@clean-hub.ru  </p>
               </div>
               
               <div>
                 <h4 className="font-semibold mb-2">Адрес:</h4>
-                <p className="text-lg">г. Рязань, ул. Чистая, д. 10</p>
+                <p className="text-lg">г. Рязань, Соборная ул., 15А  </p>
               </div>
               
               <div>
@@ -94,20 +89,10 @@ const ContactForm = () => {
             <div className="mt-8">
               <h4 className="font-semibold mb-4">Мы в мессенджерах:</h4>
               <div className="flex gap-4">
-                <a 
-                  href="https://wa.me/79209500808" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-[#25D366]/10 rounded-lg text-sm hover:bg-[#25D366] hover:text-white transition-colors hover:scale-105"
-                >
+                <a href="https://wa.me/79209500808" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-[#25D366]/10 rounded-lg text-sm hover:bg-[#25D366] hover:text-white transition-colors hover:scale-105">
                   <MessagesSquare size={20} /> WhatsApp
                 </a>
-                <a 
-                  href="https://t.me/+79209500808" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-[#0088cc]/10 rounded-lg text-sm hover:bg-[#0088cc] hover:text-white transition-colors hover:scale-105"
-                >
+                <a href="https://t.me/+79209500808" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-[#0088cc]/10 rounded-lg text-sm hover:bg-[#0088cc] hover:text-white transition-colors hover:scale-105">
                   <Send size={20} /> Telegram
                 </a>
               </div>
@@ -120,78 +105,51 @@ const ContactForm = () => {
             
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
+                <FormField control={form.control} name="name" render={({
+                field
+              }) => <FormItem>
                       <FormLabel>Имя</FormLabel>
                       <FormControl>
                         <Input placeholder="Иван Иванов" {...field} />
                       </FormControl>
                       <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                    </FormItem>} />
                 
-                <FormField
-                  control={form.control}
-                  name="phone"
-                  render={({ field }) => (
-                    <FormItem>
+                <FormField control={form.control} name="phone" render={({
+                field
+              }) => <FormItem>
                       <FormLabel>Телефон*</FormLabel>
                       <FormControl>
                         <Input placeholder="+7 (999) 123-45-67" {...field} />
                       </FormControl>
                       <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                    </FormItem>} />
                 
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
+                <FormField control={form.control} name="email" render={({
+                field
+              }) => <FormItem>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
                         <Input placeholder="example@mail.ru" {...field} />
                       </FormControl>
                       <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                    </FormItem>} />
                 
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
+                <FormField control={form.control} name="message" render={({
+                field
+              }) => <FormItem>
                       <FormLabel>Сообщение</FormLabel>
                       <FormControl>
-                        <Textarea 
-                          placeholder="Опишите ваш запрос или вопрос..."
-                          className="min-h-[120px]"
-                          {...field}
-                        />
+                        <Textarea placeholder="Опишите ваш запрос или вопрос..." className="min-h-[120px]" {...field} />
                       </FormControl>
                       <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                    </FormItem>} />
                 
-                <FormField
-                  control={form.control}
-                  name="agreement"
-                  render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0 py-4">
+                <FormField control={form.control} name="agreement" render={({
+                field
+              }) => <FormItem className="flex flex-row items-start space-x-3 space-y-0 py-4">
                       <FormControl>
-                        <input
-                          type="checkbox"
-                          className="w-5 h-5 mt-1 text-brand-green border-gray-300 rounded focus:ring-brand-green"
-                          checked={field.value}
-                          onChange={field.onChange}
-                        />
+                        <input type="checkbox" className="w-5 h-5 mt-1 text-brand-green border-gray-300 rounded focus:ring-brand-green" checked={field.value} onChange={field.onChange} />
                       </FormControl>
                       <div className="space-y-1 leading-none">
                         <FormLabel>
@@ -199,9 +157,7 @@ const ContactForm = () => {
                         </FormLabel>
                         <FormMessage />
                       </div>
-                    </FormItem>
-                  )}
-                />
+                    </FormItem>} />
                 
                 <Button type="submit" className="btn-primary w-full">
                   <Check size={18} className="mr-2" /> Отправить заявку
@@ -211,8 +167,6 @@ const ContactForm = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ContactForm;
