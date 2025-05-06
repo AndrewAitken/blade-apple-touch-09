@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -31,6 +32,7 @@ const formatPhoneNumber = (value: string) => {
     return `+7 (${phoneNumber.slice(1, 4)}) ${phoneNumber.slice(4, 7)}-${phoneNumber.slice(7, 9)}-${phoneNumber.slice(9, 11)}`;
   }
 };
+
 const formSchema = z.object({
   name: z.string().min(2, "Имя должно содержать не менее 2 символов"),
   phone: z.string().min(10, "Введите корректный номер телефона"),
@@ -40,10 +42,10 @@ const formSchema = z.object({
     message: "Необходимо согласиться с условиями"
   })
 });
+
 const ContactForm = () => {
-  const {
-    toast
-  } = useToast();
+  const { toast } = useToast();
+  
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -54,27 +56,47 @@ const ContactForm = () => {
       agreement: false
     }
   });
-  const onSubmit = data => {
-    // Process the phone number before submission (remove formatting)
-    const cleanedPhone = data.phone.replace(/\D/g, "");
-    const submissionData = {
-      ...data,
-      phone: cleanedPhone.length > 0 ? `+${cleanedPhone}` : ""
-    };
-    console.log("Отправка формы:", submissionData);
 
-    // Имитация отправки данных в Telegram
-    setTimeout(() => {
+  const onSubmit = async (data: any) => {
+    try {
+      // Process the phone number before submission (remove formatting)
+      const cleanedPhone = data.phone.replace(/\D/g, "");
+      const phoneForSubmission = cleanedPhone.length > 0 ? `+${cleanedPhone}` : "";
+      
+      const submissionData = {
+        ...data,
+        phone: phoneForSubmission
+      };
+      
+      console.log("Отправка формы:", submissionData);
+
+      // Отправка в Telegram
+      await fetch("https://api.telegram.org/bot7252849088:AAHCQfLWz-YyxY227f15HhJGzqvjydDe_cY/sendMessage", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          chat_id: "393097451",
+          text: `🧼 Новая заявка CleanHub:\nИмя: ${data.name}\nТелефон: ${phoneForSubmission}\nEmail: ${data.email || "Не указан"}\nСообщение: ${data.message}`
+        })
+      });
+
       toast({
         title: "Заявка отправлена!",
         description: "Мы свяжемся с вами в ближайшее время",
-        // Исправляем тип с "success" на "default"
         variant: "default"
       });
 
-      // В реальном приложении здесь может быть логика отправки данных в Telegram
       form.reset();
-    }, 1000);
+    } catch (error) {
+      console.error("Ошибка при отправке заявки:", error);
+      toast({
+        title: "Ошибка отправки",
+        description: "Не удалось отправить заявку. Пожалуйста, попробуйте позже.",
+        variant: "destructive"
+      });
+    }
   };
 
   // Handle phone input with masking
@@ -82,7 +104,9 @@ const ContactForm = () => {
     const formattedValue = formatPhoneNumber(e.target.value);
     onChange(formattedValue);
   };
-  return <section id="contact" className="section bg-brand-beige/20">
+
+  return (
+    <section id="contact" className="section bg-brand-beige/20">
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Связаться с нами</h2>
@@ -199,6 +223,8 @@ const ContactForm = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default ContactForm;
