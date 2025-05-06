@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Calculator } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -142,16 +143,20 @@ const HomeCalculator = () => {
       </CardHeader>
       <CardContent className="pt-6">
         <div className="space-y-6">
-          {/* Add Tabs for cleaning types */}
-          <Tabs value={cleaningType} onValueChange={(value: CleaningType) => setCleaningType(value)} className="w-full">
-            <TabsList className="w-full mb-4">
-              {Object.entries(cleaningTypeNames).map(([key, name]) => (
-                <TabsTrigger key={key} value={key} className="flex-1">
-                  {name}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </Tabs>
+          {/* Replace Tabs with Select for cleaning types */}
+          <div className="space-y-3">
+            <Label htmlFor="cleaningType">Тип уборки</Label>
+            <Select value={cleaningType} onValueChange={(value: CleaningType) => setCleaningType(value)}>
+              <SelectTrigger id="cleaningType">
+                <SelectValue placeholder="Выберите тип уборки" />
+              </SelectTrigger>
+              <SelectContent>
+                {Object.entries(cleaningTypeNames).map(([key, name]) => (
+                  <SelectItem key={key} value={key}>{name}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
