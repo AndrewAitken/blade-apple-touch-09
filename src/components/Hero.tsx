@@ -9,7 +9,7 @@ const Hero = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fade-in">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Premium <br/> Eco Cleaning
+              WashUp - профессиональный клининг в Рязани
             </h1>
             <p className="text-lg md:text-xl text-brand-gray/80 max-w-xl">
               Профессиональная экологичная уборка для вашего дома, офиса или коммерческого помещения. Минималистичный подход — максимальная чистота.
