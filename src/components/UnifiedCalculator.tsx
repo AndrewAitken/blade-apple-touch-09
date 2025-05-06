@@ -35,9 +35,9 @@ const UnifiedCalculator = () => {
         </div>
 
         <Tabs defaultValue="home" className="max-w-2xl mx-auto">
-          <TabsList className="grid grid-cols-2 mb-8 w-full py-0 h-12 rounded-2xl bg-neutral-100">
-            <TabsTrigger value="home" className="text-base py-[8px] rounded-xl">Для дома</TabsTrigger>
-            <TabsTrigger value="business" className="text-base py-[8px] rounded-xl">Для бизнеса</TabsTrigger>
+          <TabsList className="w-full mb-8 justify-center">
+            <TabsTrigger value="home" className="text-base w-1/2">Для дома</TabsTrigger>
+            <TabsTrigger value="business" className="text-base w-1/2">Для бизнеса</TabsTrigger>
           </TabsList>
           
           <TabsContent value="home">
@@ -94,44 +94,47 @@ const HomeCalculator = () => {
     renovation: "После ремонта",
     moving: "При переезде"
   };
+  
+  // Add a Tabs component for cleaning types in HomeCalculator
   const calculatePrice = () => {
-    // Если площадь больше 100 м², возвращаем "индивидуально"
+    // If area is greater than 100 m², return "individual"
     if (area > 100) {
       setPrice("individual");
       return;
     }
 
-    // Получаем базовую цену в зависимости от типа уборки
+    // Get the base price based on the cleaning type
     const {
       base,
       step
     } = cleaningBaseRates[cleaningType];
 
-    // Рассчитываем надбавку за площадь
+    // Calculate the additional price for area
     let areaPrice = base;
     if (area > 40) {
       const extraArea = Math.ceil((area - 40) / 20);
       areaPrice += extraArea * step;
     }
 
-    // Добавляем стоимость дополнительных услуг
+    // Add the cost of additional services
     const windowsPrice = windows * 500;
     const balconyPrice = balcony ? 1500 : 0;
     const sofasPrice = sofas * 2500;
     const armchairsPrice = armchairs * 1500;
 
-    // Итоговая стоимость
+    // Total cost
     const totalPrice = areaPrice + windowsPrice + balconyPrice + sofasPrice + armchairsPrice;
     setPrice(totalPrice);
   };
 
-  // Функции для изменения количества
+  // Functions for changing quantities
   const incrementWindows = () => setWindows(prev => prev + 1);
   const decrementWindows = () => setWindows(prev => prev > 0 ? prev - 1 : 0);
   const incrementSofas = () => setSofas(prev => prev + 1);
   const decrementSofas = () => setSofas(prev => prev > 0 ? prev - 1 : 0);
   const incrementArmchairs = () => setArmchairs(prev => prev + 1);
   const decrementArmchairs = () => setArmchairs(prev => prev > 0 ? prev - 1 : 0);
+  
   return <Card className="shadow-md rounded-2xl">
       <CardHeader className="bg-brand-beige/10 rounded-xl">
         <CardTitle>Калькулятор для дома</CardTitle>
@@ -139,19 +142,18 @@ const HomeCalculator = () => {
       </CardHeader>
       <CardContent className="pt-6">
         <div className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-2">
-              <Label htmlFor="cleaningType">Тип уборки</Label>
-              <Select value={cleaningType} onValueChange={(value: CleaningType) => setCleaningType(value)}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Выберите тип уборки" />
-                </SelectTrigger>
-                <SelectContent>
-                  {Object.entries(cleaningTypeNames).map(([key, name]) => <SelectItem key={key} value={key}>{name}</SelectItem>)}
-                </SelectContent>
-              </Select>
-            </div>
+          {/* Add Tabs for cleaning types */}
+          <Tabs value={cleaningType} onValueChange={(value: CleaningType) => setCleaningType(value)} className="w-full">
+            <TabsList className="w-full mb-4">
+              {Object.entries(cleaningTypeNames).map(([key, name]) => (
+                <TabsTrigger key={key} value={key} className="flex-1">
+                  {name}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </Tabs>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <Label htmlFor="balcony">Балкон/лоджия (+1500 руб.)</Label>
               <Select value={balcony ? "yes" : "no"} onValueChange={value => setBalcony(value === "yes")}>
