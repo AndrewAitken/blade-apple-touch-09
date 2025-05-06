@@ -7,7 +7,7 @@ const Hero = () => {
     <section 
       className="relative overflow-hidden py-20 md:py-32"
       style={{
-        backgroundImage: "url('/lovable-uploads/06112273-7aea-4bf7-b52b-c59d9e01aba4.png')",
+        backgroundImage: "url('/lovable-uploads/9fa5ac36-ee15-42b4-9385-dafb9e60f745.png')",
         backgroundSize: "cover",
         backgroundPosition: "center"
       }}
