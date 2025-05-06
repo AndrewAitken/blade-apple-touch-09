@@ -35,7 +35,7 @@ const UnifiedCalculator = () => {
         </div>
 
         <Tabs defaultValue="home" className="max-w-2xl mx-auto">
-          <TabsList className="grid grid-cols-2 mb-8 w-full py-0 h-12 rounded-2xl">
+          <TabsList className="grid grid-cols-2 mb-8 w-full py-0 h-12 rounded-2xl bg-neutral-100">
             <TabsTrigger value="home" className="text-base py-[8px] rounded-xl">Для дома</TabsTrigger>
             <TabsTrigger value="business" className="text-base py-[8px] rounded-xl">Для бизнеса</TabsTrigger>
           </TabsList>
