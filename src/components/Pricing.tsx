@@ -172,11 +172,13 @@ const Pricing = () => {
         </div>
         
         <div className="mt-12 text-center">
-          <Shimmer className="inline-block">
-            <Button className="btn-primary hover:scale-105 transition-all duration-300">
-              Получить расчет стоимости
-            </Button>
-          </Shimmer>
+          <div className="p-2">
+            <Shimmer className="inline-block">
+              <Button className="btn-primary hover:scale-105 transition-all duration-300">
+                Получить расчет стоимости
+              </Button>
+            </Shimmer>
+          </div>
         </div>
       </div>
     </section>
