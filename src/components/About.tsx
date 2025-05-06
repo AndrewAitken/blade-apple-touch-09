@@ -1,19 +1,8 @@
-
 import React from "react";
 import { Check } from "lucide-react";
-
-const benefitsData = [
-  "Экологичные чистящие средства",
-  "Современное оборудование",
-  "Опытный персонал",
-  "Гарантия качества",
-  "Фиксированные цены",
-  "Бережное отношение к вашим вещам"
-];
-
+const benefitsData = ["Экологичные чистящие средства", "Современное оборудование", "Опытный персонал", "Гарантия качества", "Фиксированные цены", "Бережное отношение к вашим вещам"];
 const About = () => {
-  return (
-    <section id="about" className="section bg-brand-green/10">
+  return <section id="about" className="section bg-brand-green/10">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1 animate-fade-in">
@@ -26,19 +15,17 @@ const About = () => {
               </div>
               <div className="absolute inset-8 bg-white rounded-2xl shadow-lg p-6 flex items-center justify-center">
                 <div className="text-center">
-                  <img 
-                    src="/lovable-uploads/233327c0-5406-4f3f-9f57-c8ff6dddf6fb.png" 
-                    alt="WashUp Logo" 
-                    className="w-32 h-32 mx-auto mb-4" 
-                  />
-                  <h4 className="font-bold text-xl">WashUp</h4>
-                  <p className="text-sm text-brand-gray/70">Premium Eco Cleaning</p>
+                  <img src="/lovable-uploads/233327c0-5406-4f3f-9f57-c8ff6dddf6fb.png" alt="WashUp Logo" className="w-48 h-48 mx-auto mb-4" />
+                  
+                  
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="order-1 md:order-2 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+          <div className="order-1 md:order-2 animate-fade-in" style={{
+          animationDelay: "0.2s"
+        }}>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">О компании WashUp</h2>
             <p className="text-lg mb-6">
               WashUp — это команда профессионалов с многолетним опытом работы в сфере клининга. 
@@ -52,20 +39,16 @@ const About = () => {
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-              {benefitsData.map((benefit, index) => (
-                <div key={index} className="flex items-center gap-2">
+              {benefitsData.map((benefit, index) => <div key={index} className="flex items-center gap-2">
                   <span className="flex-shrink-0 w-5 h-5 rounded-full bg-brand-green/20 flex items-center justify-center">
                     <Check size={12} className="text-brand-green" />
                   </span>
                   <span>{benefit}</span>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default About;
