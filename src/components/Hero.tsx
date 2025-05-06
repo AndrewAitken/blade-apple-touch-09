@@ -7,12 +7,12 @@ const Hero = () => {
     <section 
       className="relative overflow-hidden py-20 md:py-32"
       style={{
-        backgroundImage: "url('/lovable-uploads/f8c7e57d-13a1-465a-b5d5-d231b4d9dbe3.png')",
+        backgroundImage: "url('/lovable-uploads/90c517b8-1b44-4fd0-85a5-88a9cd029d48.png')",
         backgroundSize: "cover",
         backgroundPosition: "center"
       }}
     >
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]"></div>
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
       <div className="container mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fade-in">
