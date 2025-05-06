@@ -1,15 +1,17 @@
-
 import React, { useState } from "react";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Shimmer } from "@/components/ui/skeleton";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 type CleaningType = 'regular' | 'general' | 'renovation' | 'moving';
 
 const Pricing = () => {
   const [selectedTab, setSelectedTab] = useState<CleaningType>('regular');
+  const isMobile = useIsMobile();
 
   const regularCleaningData = [
     { area: "до 40", price: "от 2500" },
@@ -84,25 +86,45 @@ const Pricing = () => {
           </p>
         </div>
 
-        {/* Преобразовано из кнопок в табы */}
+        {/* Переключение между табами и селе��том в зависимости от размера экрана */}
         <div className="mb-8">
-          <Tabs 
-            value={selectedTab} 
-            onValueChange={(value: CleaningType) => setSelectedTab(value)}
-            className="justify-center"
-          >
-            <TabsList className="w-full md:w-auto grid grid-cols-2 md:grid-cols-4 gap-2">
-              {cleaningTypes.map((type) => (
-                <TabsTrigger
-                  key={type.id}
-                  value={type.id as CleaningType}
-                  className="px-4 py-2"
-                >
-                  {type.name}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </Tabs>
+          {isMobile ? (
+            <div className="w-full max-w-sm mx-auto">
+              <Select 
+                value={selectedTab}
+                onValueChange={(value: CleaningType) => setSelectedTab(value)}
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Выберите тип уборки" />
+                </SelectTrigger>
+                <SelectContent>
+                  {cleaningTypes.map((type) => (
+                    <SelectItem key={type.id} value={type.id}>
+                      {type.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          ) : (
+            <Tabs 
+              value={selectedTab} 
+              onValueChange={(value: CleaningType) => setSelectedTab(value)}
+              className="justify-center"
+            >
+              <TabsList className="w-full md:w-auto grid grid-cols-4 gap-2">
+                {cleaningTypes.map((type) => (
+                  <TabsTrigger
+                    key={type.id}
+                    value={type.id as CleaningType}
+                    className="px-4 py-2"
+                  >
+                    {type.name}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </Tabs>
+          )}
         </div>
 
         {/* Описание выбранного типа уборки */}
