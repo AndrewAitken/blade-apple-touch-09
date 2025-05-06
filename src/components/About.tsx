@@ -26,12 +26,11 @@ const About = () => {
               </div>
               <div className="absolute inset-8 bg-white rounded-2xl shadow-lg p-6 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="grid grid-cols-2 gap-1 w-24 h-24 mx-auto border-2 border-brand-gray p-1 mb-4">
-                    <div className="bg-brand-gray"></div>
-                    <div className="bg-brand-gray"></div>
-                    <div className="bg-brand-gray"></div>
-                    <div className="bg-brand-gray"></div>
-                  </div>
+                  <img 
+                    src="/lovable-uploads/233327c0-5406-4f3f-9f57-c8ff6dddf6fb.png" 
+                    alt="WashUp Logo" 
+                    className="w-32 h-32 mx-auto mb-4" 
+                  />
                   <h4 className="font-bold text-xl">WashUp</h4>
                   <p className="text-sm text-brand-gray/70">Premium Eco Cleaning</p>
                 </div>
