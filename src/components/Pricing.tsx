@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -52,7 +51,7 @@ const Pricing = () => {
     { service: "Мытье духового шкафа (внутри)", unit: "шт.", price: "от 1000", description: "Удаление жира и нагара." },
     { service: "Глажка белья", unit: "кг", price: "от 400", description: "" },
     { service: "Уборка в шкафах (один шкаф)", unit: "шт.", price: "от 800", description: "Сортировка, протирка полок, удаление пыли." },
-    { service: "Дезинфекция санузла", unit: "помещение", price: "от 800", description: "Обработка поверхностей дезинфицирующими средствами." },
+    { service: "Дезинфекция санузла", unit: "помещение", price: "от 800", description: "Обраб��тка поверхностей дезинфицирующими средствами." },
     { service: "Вынос мусора (большой объем)", unit: "м³", price: "Индивидуально", description: "" }
   ];
 
@@ -92,8 +91,8 @@ const Pricing = () => {
               variant={selectedTab === type.id ? "default" : "outline"}
               className={`transition-all duration-300 ${
                 selectedTab === type.id
-                  ? "bg-brand-green text-white scale-105"
-                  : "hover:bg-brand-beige/20 hover:scale-105"
+                  ? "bg-brand-green text-white"
+                  : "hover:bg-brand-beige/20"
               }`}
             >
               {type.name}
@@ -174,7 +173,7 @@ const Pricing = () => {
         <div className="mt-12 text-center">
           <div className="p-4 inline-block">
             <Shimmer className="inline-block overflow-visible">
-              <Button className="btn-primary hover:scale-105 transition-all duration-300">
+              <Button className="btn-primary transition-all duration-300">
                 Получить расчет стоимости
               </Button>
             </Shimmer>

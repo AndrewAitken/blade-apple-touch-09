@@ -23,7 +23,7 @@ const Shimmer = ({
 }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
     <div
-      className={cn("relative overflow-hidden", className)}
+      className={cn("relative overflow-visible", className)}
       {...props}
     >
       {children}
