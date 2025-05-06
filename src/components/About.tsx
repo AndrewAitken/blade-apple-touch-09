@@ -39,7 +39,7 @@ const About = () => {
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-              {benefitsData.map((benefit, index) => <div key={index} className="flex items-center gap-2">
+              {benefitsData.map((benefit, index) => <div key={index} className="flex items-start gap-4">
                   <span className="flex-shrink-0 w-5 h-5 rounded-full bg-brand-green/20 flex items-center justify-center">
                     <Check size={12} className="text-brand-green" />
                   </span>
