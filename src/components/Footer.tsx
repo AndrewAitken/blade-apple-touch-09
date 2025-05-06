@@ -1,6 +1,5 @@
 import React from "react";
 import { ArrowUp, House, Building, SprayCan, Building2 } from "lucide-react";
-
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({
@@ -8,9 +7,7 @@ const Footer = () => {
       behavior: "smooth"
     });
   };
-
-  return (
-    <footer className="bg-brand-gray py-12">
+  return <footer className="bg-brand-gray py-12">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="md:col-span-2">
@@ -53,7 +50,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li className="text-brand-beige/80">8 920 950 08 08</li>
               <li className="text-brand-beige/80">info@washup.ru</li>
-              <li className="text-brand-beige/80">г. Рязань, ул. Чистая, д. 10</li>
+              <li className="text-brand-beige/80">г. Рязань, ул. Соборная, д. 15А</li>
             </ul>
           </div>
         </div>
@@ -63,16 +60,11 @@ const Footer = () => {
             © {new Date().getFullYear()} WashUp. Premium Eco Cleaning. Все права защищены.
           </p>
           
-          <button 
-            onClick={scrollToTop}
-            className="flex items-center gap-2 text-white bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full mt-4 md:mt-0 transition-all duration-300 hover:scale-105"
-          >
+          <button onClick={scrollToTop} className="flex items-center gap-2 text-white bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full mt-4 md:mt-0 transition-all duration-300 hover:scale-105">
             Наверх <ArrowUp size={16} />
           </button>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
