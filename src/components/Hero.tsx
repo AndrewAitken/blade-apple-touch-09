@@ -1,19 +1,32 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const Hero = () => {
   return (
-    <section 
-      className="relative overflow-hidden py-20 md:py-32"
-      style={{
-        backgroundImage: "url('/lovable-uploads/90c517b8-1b44-4fd0-85a5-88a9cd029d48.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center"
-      }}
-    >
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
-      <div className="container mx-auto relative z-10">
+    <section className="relative overflow-hidden py-20 md:py-32">
+      {/* Используем новое изображение как абсолютно позиционированный фон */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: "url('/lovable-uploads/85e23b6a-6da7-447b-b4b0-af8808971504.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center"
+        }}
+      ></div>
+      
+      {/* Добавляем резервное изображение, которое загрузится, если возникнут проблемы с фоном */}
+      <img 
+        src="/lovable-uploads/85e23b6a-6da7-447b-b4b0-af8808971504.png"
+        alt="Профессиональная уборка WashUp"
+        className="absolute inset-0 w-full h-full object-cover z-0 opacity-0"
+      />
+      
+      {/* Темный оверлей для лучшей читаемости текста */}
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px] z-10"></div>
+      
+      <div className="container mx-auto relative z-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fade-in">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
@@ -34,15 +47,15 @@ const Hero = () => {
             </div>
           </div>
           <div className="relative h-64 md:h-auto animate-fade-in" style={{
-          animationDelay: "0.2s"
-        }}>
+            animationDelay: "0.2s"
+          }}>
             <div className="absolute top-0 right-0 w-full h-full">
               
             </div>
           </div>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black/50 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black/50 to-transparent z-10"></div>
     </section>
   );
 };
