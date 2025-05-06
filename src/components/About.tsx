@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Check } from "lucide-react";
 const benefitsData = ["Экологичные чистящие средства", "Современное оборудование", "Опытный персонал", "Гарантия качества", "Фиксированные цены", "Бережное отношение к вашим вещам"];
@@ -15,7 +16,7 @@ const About = () => {
               </div>
               <div className="absolute inset-8 bg-white rounded-2xl shadow-lg p-6 flex items-center justify-center">
                 <div className="text-center">
-                  <img src="/lovable-uploads/233327c0-5406-4f3f-9f57-c8ff6dddf6fb.png" alt="WashUp Logo" className="w-48 h-48 mx-auto mb-4" />
+                  <img src="/lovable-uploads/8a80a736-9474-4dcb-840c-ac39b2518b81.png" alt="WashUp Logo" className="w-48 h-48 mx-auto mb-4" />
                   
                   
                 </div>
