@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -8,6 +9,28 @@ import { Check, MessageCircle, MessagesSquare, Send } from "lucide-react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/hooks/use-toast";
+
+// Phone input masking function
+const formatPhoneNumber = (value: string) => {
+  if (!value) return "";
+  
+  // Remove all non-digit characters
+  const phoneNumber = value.replace(/\D/g, "");
+  
+  // Format according to the mask
+  if (phoneNumber.length === 0) {
+    return "+7";
+  } else if (phoneNumber.length <= 3) {
+    return `+7 (${phoneNumber}`;
+  } else if (phoneNumber.length <= 6) {
+    return `+7 (${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+  } else if (phoneNumber.length <= 8) {
+    return `+7 (${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6)}`;
+  } else {
+    return `+7 (${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 8)}-${phoneNumber.slice(8, 10)}`;
+  }
+};
+
 const formSchema = z.object({
   name: z.string().min(2, "Имя должно содержать не менее 2 символов"),
   phone: z.string().min(10, "Введите корректный номер телефона"),
@@ -17,22 +40,30 @@ const formSchema = z.object({
     message: "Необходимо согласиться с условиями"
   })
 });
+
 const ContactForm = () => {
-  const {
-    toast
-  } = useToast();
+  const { toast } = useToast();
+  
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      phone: "",
+      phone: "+7",
       email: "",
       message: "",
       agreement: false
     }
   });
+  
   const onSubmit = data => {
-    console.log("Отправка формы:", data);
+    // Process the phone number before submission (remove formatting)
+    const cleanedPhone = data.phone.replace(/\D/g, "");
+    const submissionData = {
+      ...data,
+      phone: `+7${cleanedPhone.substring(1)}` // Ensure it starts with +7
+    };
+    
+    console.log("Отправка формы:", submissionData);
 
     // Имитация отправки данных в Telegram
     setTimeout(() => {
@@ -44,12 +75,16 @@ const ContactForm = () => {
       });
 
       // В реальном приложении здесь может быть логика отправки данных в Telegram
-      // Например, можно использовать URL схему для открытия Telegram
-      // window.open(`https://t.me/+79209500808?text=${encodeURIComponent(`Новая заявка: ${JSON.stringify(data)}`)}`, '_blank');
-
       form.reset();
     }, 1000);
   };
+
+  // Handle phone input with masking
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>, onChange: (value: string) => void) => {
+    const formattedValue = formatPhoneNumber(e.target.value);
+    onChange(formattedValue);
+  };
+
   return <section id="contact" className="section bg-brand-beige/20">
       <div className="container mx-auto">
         <div className="text-center mb-12">
@@ -120,7 +155,12 @@ const ContactForm = () => {
               }) => <FormItem>
                       <FormLabel>Телефон*</FormLabel>
                       <FormControl>
-                        <Input placeholder="+7 (999) 123-45-67" {...field} />
+                        <Input 
+                          placeholder="+7 (999) 123-45-67" 
+                          value={field.value}
+                          onChange={(e) => handlePhoneChange(e, field.onChange)}
+                          onBlur={field.onBlur}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>} />
@@ -169,4 +209,5 @@ const ContactForm = () => {
       </div>
     </section>;
 };
+
 export default ContactForm;
