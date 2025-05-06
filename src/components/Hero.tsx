@@ -5,10 +5,10 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const Hero = () => {
   const scrollToNextSection = () => {
-    // Scroll to the services section which is likely the next section after Hero
-    const servicesSection = document.getElementById("services");
-    if (servicesSection) {
-      servicesSection.scrollIntoView({ behavior: "smooth" });
+    // Scroll to the calculator section
+    const calculatorSection = document.getElementById("calculator");
+    if (calculatorSection) {
+      calculatorSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -44,9 +44,11 @@ const Hero = () => {
               Профессиональная экологичная уборка для вашего дома, офиса или коммерческого помещения. Минималистичный подход — максимальная чистота.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button className="btn-primary btn-hover-effect group">
+              <Button 
+                className="btn-primary btn-hover-effect group"
+                onClick={scrollToNextSection}
+              >
                 Рассчитать стоимость
-                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
               </Button>
               <Button 
                 className="btn-secondary group bg-white/10 border-white text-white hover:bg-white/20"
