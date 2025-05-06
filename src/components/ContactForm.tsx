@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -12,10 +13,10 @@ import { useToast } from "@/hooks/use-toast";
 // Phone input masking function
 const formatPhoneNumber = (value: string) => {
   if (!value) return "";
-
+  
   // Remove all non-digit characters
   const phoneNumber = value.replace(/\D/g, "");
-
+  
   // Format according to the mask
   if (phoneNumber.length === 0) {
     return "";
@@ -31,6 +32,7 @@ const formatPhoneNumber = (value: string) => {
     return `+7 (${phoneNumber.slice(1, 4)}) ${phoneNumber.slice(4, 7)}-${phoneNumber.slice(7, 9)}-${phoneNumber.slice(9, 11)}`;
   }
 };
+
 const formSchema = z.object({
   name: z.string().min(2, "Имя должно содержать не менее 2 символов"),
   phone: z.string().min(10, "Введите корректный номер телефона"),
@@ -40,10 +42,10 @@ const formSchema = z.object({
     message: "Необходимо согласиться с условиями"
   })
 });
+
 const ContactForm = () => {
-  const {
-    toast
-  } = useToast();
+  const { toast } = useToast();
+  
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -54,13 +56,15 @@ const ContactForm = () => {
       agreement: false
     }
   });
+  
   const onSubmit = data => {
     // Process the phone number before submission (remove formatting)
     const cleanedPhone = data.phone.replace(/\D/g, "");
     const submissionData = {
       ...data,
-      phone: cleanedPhone.length > 0 ? `+${cleanedPhone}` : ""
+      phone: cleanedPhone.length > 0 ? `+${cleanedPhone}` : "",
     };
+    
     console.log("Отправка формы:", submissionData);
 
     // Имитация отправки данных в Telegram
@@ -82,6 +86,7 @@ const ContactForm = () => {
     const formattedValue = formatPhoneNumber(e.target.value);
     onChange(formattedValue);
   };
+
   return <section id="contact" className="section bg-brand-beige/20">
       <div className="container mx-auto">
         <div className="text-center mb-12">
@@ -91,9 +96,9 @@ const ContactForm = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-2 gap-4 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Контактная информация */}
-          <div className="bg-white p-8 shadow-sm rounded-2xl">
+          <div className="bg-white p-8 rounded-lg shadow-sm">
             <h3 className="text-xl font-bold mb-4">Контактная информация</h3>
             
             <div className="space-y-6">
@@ -132,7 +137,7 @@ const ContactForm = () => {
           </div>
           
           {/* Форма обратной связи */}
-          <div className="bg-white p-8 shadow-sm rounded-2xl">
+          <div className="bg-white p-8 rounded-lg shadow-sm">
             <h3 className="text-xl font-bold mb-6">Оставить заявку</h3>
             
             <Form {...form}>
@@ -152,7 +157,12 @@ const ContactForm = () => {
               }) => <FormItem>
                       <FormLabel>Телефон*</FormLabel>
                       <FormControl>
-                        <Input placeholder="+7 (999) 123-45-67" value={field.value} onChange={e => handlePhoneChange(e, field.onChange)} onBlur={field.onBlur} />
+                        <Input 
+                          placeholder="+7 (999) 123-45-67" 
+                          value={field.value}
+                          onChange={(e) => handlePhoneChange(e, field.onChange)}
+                          onBlur={field.onBlur}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>} />
@@ -201,4 +211,5 @@ const ContactForm = () => {
       </div>
     </section>;
 };
+
 export default ContactForm;
