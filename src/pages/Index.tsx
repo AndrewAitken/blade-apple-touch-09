@@ -3,8 +3,7 @@ import React from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
-import PriceCalculator from "@/components/PriceCalculator";
-import B2BCalculator from "@/components/B2BCalculator";
+import UnifiedCalculator from "@/components/UnifiedCalculator";
 import Pricing from "@/components/Pricing";
 import Portfolio from "@/components/Portfolio";
 import About from "@/components/About";
@@ -18,8 +17,7 @@ const Index = () => {
       <main>
         <Hero />
         <Services />
-        <PriceCalculator />
-        <B2BCalculator />
+        <UnifiedCalculator />
         <Pricing />
         <Portfolio />
         <About />
