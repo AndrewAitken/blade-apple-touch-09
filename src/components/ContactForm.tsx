@@ -19,15 +19,17 @@ const formatPhoneNumber = (value: string) => {
   
   // Format according to the mask
   if (phoneNumber.length === 0) {
-    return "+7";
-  } else if (phoneNumber.length <= 3) {
-    return `+7 (${phoneNumber}`;
-  } else if (phoneNumber.length <= 6) {
-    return `+7 (${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
-  } else if (phoneNumber.length <= 8) {
-    return `+7 (${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6)}`;
+    return "";
+  } else if (phoneNumber.length <= 1) {
+    return `+7`;
+  } else if (phoneNumber.length <= 4) {
+    return `+7 (${phoneNumber.slice(1, 4)}`;
+  } else if (phoneNumber.length <= 7) {
+    return `+7 (${phoneNumber.slice(1, 4)}) ${phoneNumber.slice(4, 7)}`;
+  } else if (phoneNumber.length <= 9) {
+    return `+7 (${phoneNumber.slice(1, 4)}) ${phoneNumber.slice(4, 7)}-${phoneNumber.slice(7, 9)}`;
   } else {
-    return `+7 (${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 8)}-${phoneNumber.slice(8, 10)}`;
+    return `+7 (${phoneNumber.slice(1, 4)}) ${phoneNumber.slice(4, 7)}-${phoneNumber.slice(7, 9)}-${phoneNumber.slice(9, 11)}`;
   }
 };
 
@@ -48,7 +50,7 @@ const ContactForm = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      phone: "+7",
+      phone: "",
       email: "",
       message: "",
       agreement: false
@@ -60,7 +62,7 @@ const ContactForm = () => {
     const cleanedPhone = data.phone.replace(/\D/g, "");
     const submissionData = {
       ...data,
-      phone: `+7${cleanedPhone.substring(1)}` // Ensure it starts with +7
+      phone: cleanedPhone.length > 0 ? `+${cleanedPhone}` : "",
     };
     
     console.log("Отправка формы:", submissionData);

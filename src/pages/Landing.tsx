@@ -6,6 +6,29 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { toast } from "sonner";
 
+// Phone input masking function for the Landing page
+const formatPhoneNumber = (value: string) => {
+  if (!value) return "";
+  
+  // Remove all non-digit characters
+  const phoneNumber = value.replace(/\D/g, "");
+  
+  // Format according to the mask
+  if (phoneNumber.length === 0) {
+    return "";
+  } else if (phoneNumber.length <= 1) {
+    return `+7`;
+  } else if (phoneNumber.length <= 4) {
+    return `+7 (${phoneNumber.slice(1, 4)}`;
+  } else if (phoneNumber.length <= 7) {
+    return `+7 (${phoneNumber.slice(1, 4)}) ${phoneNumber.slice(4, 7)}`;
+  } else if (phoneNumber.length <= 9) {
+    return `+7 (${phoneNumber.slice(1, 4)}) ${phoneNumber.slice(4, 7)}-${phoneNumber.slice(7, 9)}`;
+  } else {
+    return `+7 (${phoneNumber.slice(1, 4)}) ${phoneNumber.slice(4, 7)}-${phoneNumber.slice(7, 9)}-${phoneNumber.slice(9, 11)}`;
+  }
+};
+
 export default function Landing() {
   const [formData, setFormData] = useState({
     name: "",
@@ -19,7 +42,13 @@ export default function Landing() {
   const [price, setPrice] = useState<number | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    
+    if (name === "phone") {
+      setFormData({ ...formData, [name]: formatPhoneNumber(value) });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const calculatePrice = () => {
@@ -34,6 +63,10 @@ export default function Landing() {
     e.preventDefault();
 
     try {
+      // Process the phone number before submission
+      const cleanedPhone = formData.phone.replace(/\D/g, "");
+      const phoneForSubmission = cleanedPhone.length > 0 ? `+${cleanedPhone}` : "";
+      
       // Отправка в Telegram
       await fetch("https://api.telegram.org/bot7252849088:AAHCQfLWz-YyxY227f15HhJGzqvjydDe_cY/sendMessage", {
         method: "POST",
@@ -42,7 +75,7 @@ export default function Landing() {
         },
         body: JSON.stringify({
           chat_id: "393097451",
-          text: `🧼 Новая заявка WashUp:\nИмя: ${formData.name}\nТелефон: ${formData.phone}\nУслуга: ${formData.service}\nКомментарий: ${formData.message}\nПлощадь: ${formData.area} м²\nСанузлы: ${formData.bathrooms}`
+          text: `🧼 Новая заявка WashUp:\nИмя: ${formData.name}\nТелефон: ${phoneForSubmission}\nУслуга: ${formData.service}\nКомментарий: ${formData.message}\nПлощадь: ${formData.area} м²\nСанузлы: ${formData.bathrooms}`
         })
       });
 
