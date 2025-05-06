@@ -133,7 +133,7 @@ const HomeCalculator = () => {
   const incrementArmchairs = () => setArmchairs(prev => prev + 1);
   const decrementArmchairs = () => setArmchairs(prev => prev > 0 ? prev - 1 : 0);
   return <Card className="shadow-md rounded-2xl">
-      <CardHeader className="bg-brand-beige/10">
+      <CardHeader className="bg-brand-beige/10 rounded-xl">
         <CardTitle>Калькулятор для дома</CardTitle>
         <CardDescription>Расчет стоимости для частных клиентов</CardDescription>
       </CardHeader>
@@ -369,7 +369,7 @@ const BusinessCalculator = () => {
       </div>;
   };
   return <Card className="shadow-md rounded-2xl">
-      <CardHeader className="bg-brand-green/10">
+      <CardHeader className="bg-brand-green/10 rounded-xl">
         <div className="flex items-center justify-between">
           <div>
             <CardTitle>Расчет для бизнес-клиентов</CardTitle>
