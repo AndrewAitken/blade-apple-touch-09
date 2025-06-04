@@ -94,7 +94,7 @@ const additionalServices = [
 
 const Pricing = () => {
   return (
-    <section className="section bg-brand-beige/20">
+    <section id="pricing" className="section bg-brand-beige/20">
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Цены на услуги</h2>

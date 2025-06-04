@@ -19,7 +19,7 @@ const Navbar = () => {
         <nav className="hidden md:flex items-center space-x-8">
           <a href="/#about" className="relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-brand-green after:origin-bottom-right after:transition-all after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left hover:text-brand-green transition-colors">О нас</a>
           <a href="/#services" className="relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-brand-green after:origin-bottom-right after:transition-all after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left hover:text-brand-green transition-colors">Услуги</a>
-          <a href="/pricing" className="relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-brand-green after:origin-bottom-right after:transition-all after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left hover:text-brand-green transition-colors">Цены</a>
+          <a href="/#pricing" className="relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-brand-green after:origin-bottom-right after:transition-all after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left hover:text-brand-green transition-colors">Цены</a>
           <a href="/#calculator" className="relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-brand-green after:origin-bottom-right after:transition-all after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left hover:text-brand-green transition-colors">Калькулятор</a>
           <a href="/#portfolio" className="relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-brand-green after:origin-bottom-right after:transition-all after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left hover:text-brand-green transition-colors">Наши работы</a>
         </nav>
@@ -50,7 +50,7 @@ const Navbar = () => {
           <nav className="flex flex-col space-y-4">
             <a href="/#about" className="hover:text-brand-green transition-colors" onClick={() => setIsOpen(false)}>О нас</a>
             <a href="/#services" className="hover:text-brand-green transition-colors" onClick={() => setIsOpen(false)}>Услуги</a>
-            <a href="/pricing" className="hover:text-brand-green transition-colors" onClick={() => setIsOpen(false)}>Цены</a>
+            <a href="/#pricing" className="hover:text-brand-green transition-colors" onClick={() => setIsOpen(false)}>Цены</a>
             <a href="/#calculator" className="hover:text-brand-green transition-colors" onClick={() => setIsOpen(false)}>Калькулятор</a>
             <a href="/#portfolio" className="hover:text-brand-green transition-colors" onClick={() => setIsOpen(false)}>Наши работы</a>
             

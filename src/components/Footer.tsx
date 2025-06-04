@@ -1,4 +1,3 @@
-
 import React from "react";
 import { ArrowUp, House, Building, SprayCan, Building2 } from "lucide-react";
 
@@ -28,7 +27,7 @@ const Footer = () => {
             <h4 className="text-white font-medium mb-4">Навигация</h4>
             <ul className="space-y-2">
               <li><a href="#services" className="text-brand-beige/80 hover:text-white transition-colors">Услуги</a></li>
-              <li><a href="/pricing" className="text-brand-beige/80 hover:text-white transition-colors">Цены</a></li>
+              <li><a href="#pricing" className="text-brand-beige/80 hover:text-white transition-colors">Цены</a></li>
               <li><a href="#portfolio" className="text-brand-beige/80 hover:text-white transition-colors">Наши работы</a></li>
               <li><a href="#about" className="text-brand-beige/80 hover:text-white transition-colors">О нас</a></li>
               <li><a href="#contact" className="text-brand-beige/80 hover:text-white transition-colors">Контакты</a></li>
