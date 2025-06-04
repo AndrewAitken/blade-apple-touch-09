@@ -1,6 +1,12 @@
 
 import React from "react";
 import { Check } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const mainServices = [
   {
@@ -103,59 +109,69 @@ const Pricing = () => {
           </p>
         </div>
 
-        {/* Основные услуги */}
-        <div className="mb-12">
-          <h3 className="text-2xl font-bold mb-8 text-center">Типовые клининговые услуги для коммерческих объектов</h3>
-          <div className="overflow-x-auto">
-            <table className="w-full bg-white rounded-2xl shadow-lg overflow-hidden">
-              <thead className="bg-brand-green text-white">
-                <tr>
-                  <th className="px-6 py-4 text-left">Услуга</th>
-                  <th className="px-6 py-4 text-center">Ед. измерения</th>
-                  <th className="px-6 py-4 text-center">Цена (руб.)</th>
-                  <th className="px-6 py-4 text-left">Описание</th>
-                </tr>
-              </thead>
-              <tbody>
-                {mainServices.map((item, index) => (
-                  <tr key={index} className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
-                    <td className="px-6 py-4 font-semibold">{item.service}</td>
-                    <td className="px-6 py-4 text-center">{item.unit}</td>
-                    <td className="px-6 py-4 text-center font-bold text-brand-green">{item.price}</td>
-                    <td className="px-6 py-4 text-sm text-brand-gray/80">{item.description}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <Accordion type="multiple" className="space-y-6" defaultValue={["main-services", "additional-services"]}>
+          {/* Основные услуги */}
+          <AccordionItem value="main-services" className="bg-white rounded-2xl shadow-lg border-0">
+            <AccordionTrigger className="px-6 py-4 hover:no-underline">
+              <h3 className="text-2xl font-bold text-left">Типовые клининговые услуги для коммерческих объектов</h3>
+            </AccordionTrigger>
+            <AccordionContent className="px-0 pb-0">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-brand-green text-white">
+                    <tr>
+                      <th className="px-6 py-4 text-left">Услуга</th>
+                      <th className="px-6 py-4 text-center">Ед. измерения</th>
+                      <th className="px-6 py-4 text-center">Цена (руб.)</th>
+                      <th className="px-6 py-4 text-left">Описание</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {mainServices.map((item, index) => (
+                      <tr key={index} className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
+                        <td className="px-6 py-4 font-semibold">{item.service}</td>
+                        <td className="px-6 py-4 text-center">{item.unit}</td>
+                        <td className="px-6 py-4 text-center font-bold text-brand-green">{item.price}</td>
+                        <td className="px-6 py-4 text-sm text-brand-gray/80">{item.description}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
 
-        {/* Дополнительные услуги */}
-        <div>
-          <h3 className="text-2xl font-bold mb-8 text-center">Дополнительные услуги</h3>
-          <div className="overflow-x-auto">
-            <table className="w-full bg-white rounded-2xl shadow-lg overflow-hidden">
-              <thead className="bg-brand-green text-white">
-                <tr>
-                  <th className="px-6 py-4 text-left">Услуга</th>
-                  <th className="px-6 py-4 text-center">Ед. измерения</th>
-                  <th className="px-6 py-4 text-center">Цена (руб.)</th>
-                  <th className="px-6 py-4 text-left">Описание</th>
-                </tr>
-              </thead>
-              <tbody>
-                {additionalServices.map((item, index) => (
-                  <tr key={index} className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
-                    <td className="px-6 py-4 font-semibold">{item.service}</td>
-                    <td className="px-6 py-4 text-center">{item.unit}</td>
-                    <td className="px-6 py-4 text-center font-bold text-brand-green">{item.price}</td>
-                    <td className="px-6 py-4 text-sm text-brand-gray/80">{item.description}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+          {/* Дополнительные услуги */}
+          <AccordionItem value="additional-services" className="bg-white rounded-2xl shadow-lg border-0">
+            <AccordionTrigger className="px-6 py-4 hover:no-underline">
+              <h3 className="text-2xl font-bold text-left">Дополнительные услуги</h3>
+            </AccordionTrigger>
+            <AccordionContent className="px-0 pb-0">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-brand-green text-white">
+                    <tr>
+                      <th className="px-6 py-4 text-left">Услуга</th>
+                      <th className="px-6 py-4 text-center">Ед. измерения</th>
+                      <th className="px-6 py-4 text-center">Цена (руб.)</th>
+                      <th className="px-6 py-4 text-left">Описание</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {additionalServices.map((item, index) => (
+                      <tr key={index} className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
+                        <td className="px-6 py-4 font-semibold">{item.service}</td>
+                        <td className="px-6 py-4 text-center">{item.unit}</td>
+                        <td className="px-6 py-4 text-center font-bold text-brand-green">{item.price}</td>
+                        <td className="px-6 py-4 text-sm text-brand-gray/80">{item.description}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
 
         <div className="mt-12 text-center">
           <div className="bg-white rounded-2xl p-8 shadow-lg max-w-2xl mx-auto">
