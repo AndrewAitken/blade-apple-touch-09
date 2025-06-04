@@ -13,7 +13,6 @@ import { useState } from "react";
 // B2B Calculator Types
 type ServiceCategory = 'regular' | 'general' | 'renovation' | 'machine' | 'windows' | 'disinfection' | 'chemistry' | 'special';
 type PropertyType = 'office' | 'warehouse' | 'retail' | 'production' | 'medical' | 'restaurant' | 'business_center' | 'educational' | 'parking' | 'stairs';
-
 interface RateInfo {
   office: number;
   warehouse: number;
@@ -26,10 +25,8 @@ interface RateInfo {
   parking: number;
   stairs: number;
 }
-
 const UnifiedCalculator = () => {
-  return (
-    <section id="calculator" className="section bg-white py-16">
+  return <section id="calculator" className="section bg-white py-16">
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Рассчитайте стоимость уборки</h2>
@@ -48,10 +45,8 @@ const UnifiedCalculator = () => {
           </p>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 const BusinessCalculator = () => {
   const [serviceCategory, setServiceCategory] = useState<ServiceCategory>('regular');
   const [propertyType, setPropertyType] = useState<PropertyType>('office');
@@ -70,7 +65,8 @@ const BusinessCalculator = () => {
       restaurant: 80,
       business_center: 70,
       educational: 70,
-      parking: 0, // не применимо
+      parking: 0,
+      // не применимо
       stairs: 50
     },
     general: {
@@ -184,15 +180,12 @@ const BusinessCalculator = () => {
     parking: 'Паркинги и автостоянки',
     stairs: 'Лестничные пролёты / подъезды'
   };
-
   const calculatePrice = () => {
     const rate = rates[serviceCategory][propertyType];
-    
     if (rate === 0) {
       setPrice(null);
       return;
     }
-    
     if (serviceCategory === 'windows' || serviceCategory === 'special') {
       const calculatedPrice = rate * quantity;
       setPrice(calculatedPrice);
@@ -205,39 +198,30 @@ const BusinessCalculator = () => {
   // Определение параметра ввода в зависимости от услуги
   const renderInputField = () => {
     if (serviceCategory === 'windows') {
-      return (
-        <div className="space-y-2">
+      return <div className="space-y-2">
           <Label htmlFor="quantity">Площадь окон/фасадов (м²)</Label>
-          <Input id="quantity" type="number" min="1" value={area} onChange={(e) => setArea(Number(e.target.value))} />
-        </div>
-      );
+          <Input id="quantity" type="number" min="1" value={area} onChange={e => setArea(Number(e.target.value))} />
+        </div>;
     }
     if (serviceCategory === 'special') {
-      return (
-        <div className="space-y-2">
+      return <div className="space-y-2">
           <Label htmlFor="quantity">Количество часов</Label>
-          <Input id="quantity" type="number" min="1" value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} />
-        </div>
-      );
+          <Input id="quantity" type="number" min="1" value={quantity} onChange={e => setQuantity(Number(e.target.value))} />
+        </div>;
     }
-    return (
-      <div className="space-y-2">
+    return <div className="space-y-2">
         <Label htmlFor="area">Площадь помещения (м²)</Label>
-        <Input id="area" type="number" min="10" value={area} onChange={(e) => setArea(Number(e.target.value))} />
-      </div>
-    );
+        <Input id="area" type="number" min="10" value={area} onChange={e => setArea(Number(e.target.value))} />
+      </div>;
   };
-
   const isServiceAvailable = (service: ServiceCategory, property: PropertyType) => {
     return rates[service][property] > 0;
   };
-
-  return (
-    <Card className="shadow-md rounded-2xl">
+  return <Card className="shadow-md rounded-2xl">
       <CardHeader className="bg-brand-green/10 rounded-xl">
         <div className="flex items-center justify-between">
           <div>
-            <CardTitle>Калькулятор стоимости уборки</CardTitle>
+            <CardTitle>Калькулятор</CardTitle>
             <CardDescription>Расчет для коммерческих объектов</CardDescription>
           </div>
           <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm">
@@ -249,17 +233,11 @@ const BusinessCalculator = () => {
         <div className="space-y-6">
           <div className="space-y-3">
             <Label>Тип помещения</Label>
-            <RadioGroup 
-              value={propertyType} 
-              onValueChange={(value: PropertyType) => setPropertyType(value)} 
-              className="grid grid-cols-1 md:grid-cols-2 gap-2"
-            >
-              {Object.entries(propertyNames).map(([key, name]) => (
-                <div key={key} className="flex items-center space-x-2">
+            <RadioGroup value={propertyType} onValueChange={(value: PropertyType) => setPropertyType(value)} className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              {Object.entries(propertyNames).map(([key, name]) => <div key={key} className="flex items-center space-x-2">
                   <RadioGroupItem value={key} id={`property-${key}`} />
                   <Label htmlFor={`property-${key}`} className="cursor-pointer text-sm">{name}</Label>
-                </div>
-              ))}
+                </div>)}
             </RadioGroup>
           </div>
 
@@ -271,57 +249,43 @@ const BusinessCalculator = () => {
               </SelectTrigger>
               <SelectContent>
                 {Object.entries(serviceNames).map(([key, name]) => {
-                  const available = isServiceAvailable(key as ServiceCategory, propertyType);
-                  return (
-                    <SelectItem 
-                      key={key} 
-                      value={key}
-                      disabled={!available}
-                    >
+                const available = isServiceAvailable(key as ServiceCategory, propertyType);
+                return <SelectItem key={key} value={key} disabled={!available}>
                       {name} {!available && '(недоступно)'}
-                    </SelectItem>
-                  );
-                })}
+                    </SelectItem>;
+              })}
               </SelectContent>
             </Select>
           </div>
 
           {renderInputField()}
 
-          {rates[serviceCategory][propertyType] > 0 && (
-            <div className="mt-4 p-4 bg-brand-beige/10 rounded-lg">
+          {rates[serviceCategory][propertyType] > 0 && <div className="mt-4 p-4 bg-brand-beige/10 rounded-lg">
               <div className="flex items-center justify-between">
                 <span className="text-sm">
                   Тариф: <span className="font-medium">{rates[serviceCategory][propertyType]} ₽/м²</span>
                 </span>
               </div>
-            </div>
-          )}
+            </div>}
 
           <Button onClick={calculatePrice} className="btn-primary w-full mt-6">
             Рассчитать стоимость
           </Button>
 
-          {price !== null && (
-            <div className="mt-6 p-4 bg-brand-green/10 rounded-lg text-center animate-fade-in">
+          {price !== null && <div className="mt-6 p-4 bg-brand-green/10 rounded-lg text-center animate-fade-in">
               <p className="text-lg font-semibold">Примерная стоимость: от {price.toLocaleString()} ₽</p>
               <p className="text-sm text-brand-gray/80 mt-2">
                 Для получения точной стоимости и специальных условий свяжитесь с менеджером
               </p>
-            </div>
-          )}
+            </div>}
 
-          {rates[serviceCategory][propertyType] === 0 && (
-            <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-center">
+          {rates[serviceCategory][propertyType] === 0 && <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-center">
               <p className="text-sm text-yellow-800">
                 Данная услуга не применима для выбранного типа помещения
               </p>
-            </div>
-          )}
+            </div>}
         </div>
       </CardContent>
-    </Card>
-  );
+    </Card>;
 };
-
 export default UnifiedCalculator;
