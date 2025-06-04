@@ -7,32 +7,44 @@ const portfolioImages = [
   {
     src: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3",
     alt: "Уборка современного офисного пространства",
-    category: "Офисные помещения"
+    category: "Офисные помещения",
+    title: "Клининг офиса после работы",
+    description: "Ежедневная поддерживающая уборка с дезинфекцией рабочих мест"
   },
   {
     src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3",
     alt: "Клининг складского комплекса",
-    category: "Складские помещения"
+    category: "Складские помещения",
+    title: "Машинная уборка склада",
+    description: "Комплексная очистка складских площадей с использованием спецтехники"
   },
   {
     src: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3",
     alt: "Уборка торгового центра",
-    category: "Торговые центры"
+    category: "Торговые центры",
+    title: "Клининг торгового центра",
+    description: "Регулярная уборка общественных зон и торговых площадей"
   },
   {
-    src: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3",
+    src: "/lovable-uploads/208d3f35-4f0f-42c0-8a28-b891c0673eba.png",
     alt: "Клининг ресторана после работы",
-    category: "Рестораны"
+    category: "Рестораны",
+    title: "Клининг ресторана после работы",
+    description: "Глубокая очистка кухни, зала и обезжиривание оборудования"
   },
   {
     src: "https://images.unsplash.com/photo-1586227740560-8cf2732c1531?ixlib=rb-4.0.3",
     alt: "Машинная уборка производственных полов",
-    category: "Производственные объекты"
+    category: "Производственные объекты",
+    title: "Уборка производственного цеха",
+    description: "Специализированная очистка с соблюдением промышленных стандартов"
   },
   {
     src: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3",
     alt: "Уборка бизнес-центра",
-    category: "Бизнес-центры"
+    category: "Бизнес-центры",
+    title: "Генеральная уборка бизнес-центра",
+    description: "Комплексная уборка всех зон с мытьем фасадов и окон"
   }
 ];
 
@@ -64,9 +76,18 @@ const Portfolio = () => {
                 alt={image.alt}
                 className="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-gray/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                <span className="text-white text-sm mb-1">{image.category}</span>
-                <h4 className="text-white text-xl font-medium">{image.alt}</h4>
+              
+              {/* Постоянный градиент и текст */}
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-gray/80 via-brand-gray/20 to-transparent">
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <span className="text-white/80 text-sm mb-2 block">{image.category}</span>
+                  <h4 className="text-white text-xl font-semibold mb-2">{image.title}</h4>
+                  
+                  {/* Описание, которое появляется при наведении */}
+                  <p className="text-white/90 text-sm leading-relaxed opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                    {image.description}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
