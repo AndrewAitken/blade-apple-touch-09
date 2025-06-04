@@ -1,5 +1,7 @@
+
 import React from "react";
 import { ArrowUp, House, Building, SprayCan, Building2 } from "lucide-react";
+
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({
@@ -7,7 +9,9 @@ const Footer = () => {
       behavior: "smooth"
     });
   };
-  return <footer className="bg-brand-gray py-12 bg-neutral-900">
+
+  return (
+    <footer className="bg-brand-gray py-12 bg-neutral-900">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="md:col-span-2">
@@ -24,7 +28,7 @@ const Footer = () => {
             <h4 className="text-white font-medium mb-4">Навигация</h4>
             <ul className="space-y-2">
               <li><a href="#services" className="text-brand-beige/80 hover:text-white transition-colors">Услуги</a></li>
-              <li><a href="#pricing" className="text-brand-beige/80 hover:text-white transition-colors">Цены</a></li>
+              <li><a href="/pricing" className="text-brand-beige/80 hover:text-white transition-colors">Цены</a></li>
               <li><a href="#portfolio" className="text-brand-beige/80 hover:text-white transition-colors">Наши работы</a></li>
               <li><a href="#about" className="text-brand-beige/80 hover:text-white transition-colors">О нас</a></li>
               <li><a href="#contact" className="text-brand-beige/80 hover:text-white transition-colors">Контакты</a></li>
@@ -51,6 +55,8 @@ const Footer = () => {
           </button>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 };
+
 export default Footer;
