@@ -79,12 +79,14 @@ const Portfolio = () => {
               
               {/* Градиентный фон и текст, прижатый к низу */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
-                <div className="absolute bottom-0 left-0 right-0 p-6 transform transition-transform duration-300 group-hover:-translate-y-2">
-                  <span className="text-white/90 text-sm mb-2 block">{image.category}</span>
-                  <h4 className="text-white text-xl font-semibold mb-2">{image.title}</h4>
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="transform transition-transform duration-300 group-hover:-translate-y-4">
+                    <span className="text-white/90 text-sm mb-2 block">{image.category}</span>
+                    <h4 className="text-white text-xl font-semibold mb-2">{image.title}</h4>
+                  </div>
                   
-                  {/* Описание, которое появляется при наведении */}
-                  <p className="text-white/90 text-sm leading-relaxed opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                  {/* Описание, которое появляется при наведении и сдвигает основной текст вверх */}
+                  <p className="text-white/90 text-sm leading-relaxed opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
                     {image.description}
                   </p>
                 </div>
