@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -79,7 +78,7 @@ const Portfolio = () => {
               
               {/* Градиентный фон и текст, прижатый к низу */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
-                <div className="absolute bottom-6 left-6 right-6">
+                <div className="absolute bottom-0 left-0 right-0 pb-6 px-6">
                   <div className="transform transition-transform duration-300 group-hover:-translate-y-4">
                     <span className="text-white/90 text-sm mb-2 block">{image.category}</span>
                     <h4 className="text-white text-xl font-semibold mb-2">{image.title}</h4>
