@@ -12,8 +12,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              
-              <span className="text-xl font-bold text-white">WashUp</span>
+              <img src="/lovable-uploads/69edac2a-530d-46b4-9a21-183a899bc1cf.png" alt="WashUp - профессиональный клининг" className="h-8 w-auto" />
             </div>
             <p className="text-brand-beige/80 max-w-sm">
               Premium-эко-клининг с минималистичным подходом. 
