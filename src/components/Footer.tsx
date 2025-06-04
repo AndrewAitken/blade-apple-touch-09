@@ -1,6 +1,5 @@
 import React from "react";
 import { ArrowUp, House, Building, SprayCan, Building2 } from "lucide-react";
-
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({
@@ -8,14 +7,12 @@ const Footer = () => {
       behavior: "smooth"
     });
   };
-
-  return (
-    <footer className="bg-brand-gray py-12 bg-neutral-900">
+  return <footer className="bg-brand-gray py-12 bg-neutral-900">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <img src="/lovable-uploads/69edac2a-530d-46b4-9a21-183a899bc1cf.png" alt="WashUp - профессиональный клининг" className="h-7 w-auto" />
+              <img alt="WashUp - профессиональный клининг" src="/lovable-uploads/8007796a-1f36-47aa-b420-5f6d2563778a.png" className="h-6 w-auto" />
             </div>
             <p className="text-brand-beige/80 max-w-sm">
               Premium-эко-клининг с минималистичным подходом. 
@@ -54,8 +51,6 @@ const Footer = () => {
           </button>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;

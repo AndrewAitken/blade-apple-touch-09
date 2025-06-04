@@ -1,17 +1,13 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, MessageCircle, MessagesSquare, Send, House, Building, SprayCan, Building2 } from "lucide-react";
-
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <header className="py-4 sticky top-0 bg-white/100 z-50 shadow-sm">
+  return <header className="py-4 sticky top-0 bg-white/100 z-50 shadow-sm">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <a href="/" className="flex items-center gap-2">
-            <img src="/lovable-uploads/f6779ff3-22cf-4a87-8ceb-7304b297d3c2.png" alt="WashUp - профессиональный клининг" className="h-7 w-auto" />
+            <img alt="WashUp - профессиональный клининг" className="h-7 w-auto" src="/lovable-uploads/cdfb7d8e-4a03-45c8-a01e-57db012c36f7.png" />
           </a>
         </div>
 
@@ -45,8 +41,7 @@ const Navbar = () => {
       </div>
 
       {/* Мобильная навигация */}
-      {isOpen && (
-        <div className="md:hidden absolute top-16 left-0 right-0 bg-white shadow-md p-4 z-50">
+      {isOpen && <div className="md:hidden absolute top-16 left-0 right-0 bg-white shadow-md p-4 z-50">
           <nav className="flex flex-col space-y-4">
             <a href="/#about" className="hover:text-brand-green transition-colors" onClick={() => setIsOpen(false)}>О нас</a>
             <a href="/#services" className="hover:text-brand-green transition-colors" onClick={() => setIsOpen(false)}>Услуги</a>
@@ -65,10 +60,7 @@ const Navbar = () => {
             
             <Button className="btn-primary w-full mt-2">Заказать уборку</Button>
           </nav>
-        </div>
-      )}
-    </header>
-  );
+        </div>}
+    </header>;
 };
-
 export default Navbar;
