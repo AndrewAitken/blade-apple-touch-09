@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Calculator } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -11,20 +12,28 @@ import { Slider } from "@/components/ui/slider";
 import { useState } from "react";
 
 // B2B Calculator Types
-type ServiceCategory = 'regular' | 'general' | 'renovation' | 'machine' | 'windows' | 'disinfection' | 'chemistry' | 'special';
+type ServiceCategory = 'regular' | 'general' | 'renovation' | 'machine' | 'windows' | 'special';
+type SpecialService = 'dust_removal' | 'floor_cleaning' | 'stain_removal' | 'height_work' | 'emergency_cleanup';
 type PropertyType = 'office' | 'warehouse' | 'retail' | 'production' | 'medical' | 'restaurant' | 'business_center' | 'educational' | 'parking' | 'stairs';
-interface RateInfo {
-  office: number;
-  warehouse: number;
-  retail: number;
-  production: number;
-  medical: number;
-  restaurant: number;
-  business_center: number;
-  educational: number;
-  parking: number;
-  stairs: number;
+
+interface PriceRange {
+  min: number;
+  max: number;
 }
+
+interface RateInfo {
+  office: PriceRange | null;
+  warehouse: PriceRange | null;
+  retail: PriceRange | null;
+  production: PriceRange | null;
+  medical: PriceRange | null;
+  restaurant: PriceRange | null;
+  business_center: PriceRange | null;
+  educational: PriceRange | null;
+  parking: PriceRange | null;
+  stairs: PriceRange | null;
+}
+
 const UnifiedCalculator = () => {
   return <section id="calculator" className="section bg-white py-16">
       <div className="container mx-auto">
@@ -47,111 +56,87 @@ const UnifiedCalculator = () => {
       </div>
     </section>;
 };
+
 const BusinessCalculator = () => {
   const [serviceCategory, setServiceCategory] = useState<ServiceCategory>('regular');
+  const [specialService, setSpecialService] = useState<SpecialService>('dust_removal');
   const [propertyType, setPropertyType] = useState<PropertyType>('office');
   const [area, setArea] = useState<number>(100);
-  const [quantity, setQuantity] = useState<number>(1);
-  const [price, setPrice] = useState<number | null>(null);
+  const [priceRange, setPriceRange] = useState<PriceRange | null>(null);
 
   // Тарифы для разных категорий услуг и типов помещений (₽/м²)
   const rates: Record<ServiceCategory, RateInfo> = {
     regular: {
-      office: 70,
-      warehouse: 50,
-      retail: 80,
-      production: 60,
-      medical: 90,
-      restaurant: 80,
-      business_center: 70,
-      educational: 70,
-      parking: 0,
-      // не применимо
-      stairs: 50
+      office: { min: 60, max: 80 },
+      warehouse: { min: 40, max: 60 },
+      retail: { min: 70, max: 90 },
+      production: { min: 50, max: 70 },
+      medical: { min: 80, max: 100 },
+      restaurant: { min: 70, max: 90 },
+      business_center: { min: 60, max: 80 },
+      educational: { min: 60, max: 80 },
+      parking: null,
+      stairs: { min: 40, max: 60 }
     },
     general: {
-      office: 105,
-      warehouse: 80,
-      retail: 115,
-      production: 95,
-      medical: 135,
-      restaurant: 120,
-      business_center: 105,
-      educational: 105,
-      parking: 65,
-      stairs: 80
+      office: { min: 90, max: 120 },
+      warehouse: { min: 70, max: 90 },
+      retail: { min: 100, max: 130 },
+      production: { min: 80, max: 110 },
+      medical: { min: 120, max: 150 },
+      restaurant: { min: 100, max: 140 },
+      business_center: { min: 90, max: 120 },
+      educational: { min: 90, max: 120 },
+      parking: { min: 50, max: 80 },
+      stairs: { min: 70, max: 90 }
     },
     renovation: {
-      office: 145,
-      warehouse: 105,
-      retail: 145,
-      production: 140,
-      medical: 165,
-      restaurant: 155,
-      business_center: 145,
-      educational: 135,
-      parking: 95,
-      stairs: 115
+      office: { min: 130, max: 160 },
+      warehouse: { min: 90, max: 120 },
+      retail: { min: 130, max: 160 },
+      production: { min: 120, max: 160 },
+      medical: { min: 150, max: 180 },
+      restaurant: { min: 140, max: 170 },
+      business_center: { min: 130, max: 160 },
+      educational: { min: 120, max: 150 },
+      parking: { min: 80, max: 110 },
+      stairs: { min: 100, max: 130 }
     },
     machine: {
-      office: 50,
-      warehouse: 40,
-      retail: 60,
-      production: 47,
-      medical: 60,
-      restaurant: 55,
-      business_center: 50,
-      educational: 45,
-      parking: 32,
-      stairs: 0 // не применимо
+      office: { min: 40, max: 60 },
+      warehouse: { min: 30, max: 50 },
+      retail: { min: 50, max: 70 },
+      production: { min: 35, max: 60 },
+      medical: { min: 50, max: 70 },
+      restaurant: { min: 45, max: 65 },
+      business_center: { min: 40, max: 60 },
+      educational: { min: 35, max: 55 },
+      parking: { min: 25, max: 40 },
+      stairs: null
     },
     windows: {
-      office: 125,
-      warehouse: 100,
-      retail: 135,
-      production: 115,
-      medical: 150,
-      restaurant: 140,
-      business_center: 125,
-      educational: 110,
-      parking: 80,
-      stairs: 0 // не применимо
-    },
-    disinfection: {
-      office: 40,
-      warehouse: 35,
-      retail: 45,
-      production: 50,
-      medical: 100,
-      restaurant: 80,
-      business_center: 40,
-      educational: 55,
-      parking: 40,
-      stairs: 50
-    },
-    chemistry: {
-      office: 150,
-      warehouse: 120,
-      retail: 140,
-      production: 130,
-      medical: 180,
-      restaurant: 160,
-      business_center: 150,
-      educational: 140,
-      parking: 100,
-      stairs: 120
+      office: { min: 125, max: 125 },
+      warehouse: { min: 100, max: 100 },
+      retail: { min: 135, max: 135 },
+      production: { min: 115, max: 115 },
+      medical: { min: 150, max: 150 },
+      restaurant: { min: 140, max: 140 },
+      business_center: { min: 125, max: 125 },
+      educational: { min: 110, max: 110 },
+      parking: { min: 80, max: 80 },
+      stairs: null
     },
     special: {
-      office: 200,
-      warehouse: 180,
-      retail: 190,
-      production: 220,
-      medical: 250,
-      restaurant: 240,
-      business_center: 200,
-      educational: 180,
-      parking: 150,
-      stairs: 170
+      office: { min: 200, max: 250 },
+      warehouse: { min: 180, max: 220 },
+      retail: { min: 190, max: 240 },
+      production: { min: 220, max: 280 },
+      medical: { min: 250, max: 300 },
+      restaurant: { min: 240, max: 290 },
+      business_center: { min: 200, max: 250 },
+      educational: { min: 180, max: 230 },
+      parking: { min: 150, max: 200 },
+      stairs: { min: 170, max: 220 }
     }
   };
 
@@ -162,9 +147,16 @@ const BusinessCalculator = () => {
     renovation: 'Уборка после ремонта',
     machine: 'Машинная уборка полов',
     windows: 'Мытьё фасадов и окон',
-    disinfection: 'Дезинфекция',
-    chemistry: 'Химчистка',
     special: 'Специальные работы'
+  };
+
+  // Названия специальных услуг
+  const specialServiceNames: Record<SpecialService, string> = {
+    dust_removal: 'Удаление строительной пыли',
+    floor_cleaning: 'Очистка наливных полов и топпинга',
+    stain_removal: 'Удаление стойких загрязнений',
+    height_work: 'Работа на высоте / труднодоступные зоны',
+    emergency_cleanup: 'Уборка после ЧС (затопления, возгорания)'
   };
 
   // Названия типов помещений на русском
@@ -180,43 +172,45 @@ const BusinessCalculator = () => {
     parking: 'Паркинги и автостоянки',
     stairs: 'Лестничные пролёты / подъезды'
   };
+
   const calculatePrice = () => {
     const rate = rates[serviceCategory][propertyType];
-    if (rate === 0) {
-      setPrice(null);
+    if (!rate) {
+      setPriceRange(null);
       return;
     }
-    if (serviceCategory === 'windows' || serviceCategory === 'special') {
-      const calculatedPrice = rate * quantity;
-      setPrice(calculatedPrice);
-    } else {
-      const calculatedPrice = rate * area;
-      setPrice(calculatedPrice);
-    }
+
+    const minPrice = rate.min * area;
+    const maxPrice = rate.max * area;
+    setPriceRange({ min: minPrice, max: maxPrice });
   };
 
-  // Определение параметра ввода в зависимости от услуги
-  const renderInputField = () => {
-    if (serviceCategory === 'windows') {
-      return <div className="space-y-2">
-          <Label htmlFor="quantity">Площадь окон/фасадов (м²)</Label>
-          <Input id="quantity" type="number" min="1" value={area} onChange={e => setArea(Number(e.target.value))} />
-        </div>;
-    }
-    if (serviceCategory === 'special') {
-      return <div className="space-y-2">
-          <Label htmlFor="quantity">Количество часов</Label>
-          <Input id="quantity" type="number" min="1" value={quantity} onChange={e => setQuantity(Number(e.target.value))} />
-        </div>;
-    }
-    return <div className="space-y-2">
-        <Label htmlFor="area">Площадь помещения (м²)</Label>
-        <Input id="area" type="number" min="10" value={area} onChange={e => setArea(Number(e.target.value))} />
-      </div>;
-  };
   const isServiceAvailable = (service: ServiceCategory, property: PropertyType) => {
-    return rates[service][property] > 0;
+    return rates[service][property] !== null;
   };
+
+  const renderSpecialServiceSelect = () => {
+    if (serviceCategory !== 'special') return null;
+
+    return (
+      <div className="space-y-3">
+        <Label htmlFor="specialService">Вид специальных работ</Label>
+        <Select value={specialService} onValueChange={(value: SpecialService) => setSpecialService(value)}>
+          <SelectTrigger id="specialService">
+            <SelectValue placeholder="Выберите вид работ" />
+          </SelectTrigger>
+          <SelectContent>
+            {Object.entries(specialServiceNames).map(([key, name]) => (
+              <SelectItem key={key} value={key}>
+                {name}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+    );
+  };
+
   return <Card className="shadow-md rounded-2xl">
       <CardHeader className="bg-brand-green/10 rounded-xl">
         <div className="flex items-center justify-between">
@@ -234,10 +228,12 @@ const BusinessCalculator = () => {
           <div className="space-y-3">
             <Label>Тип помещения</Label>
             <RadioGroup value={propertyType} onValueChange={(value: PropertyType) => setPropertyType(value)} className="grid grid-cols-1 md:grid-cols-2 gap-2">
-              {Object.entries(propertyNames).map(([key, name]) => <div key={key} className="flex items-center space-x-2">
+              {Object.entries(propertyNames).map(([key, name]) => (
+                <div key={key} className="flex items-center space-x-2">
                   <RadioGroupItem value={key} id={`property-${key}`} />
                   <Label htmlFor={`property-${key}`} className="cursor-pointer text-sm">{name}</Label>
-                </div>)}
+                </div>
+              ))}
             </RadioGroup>
           </div>
 
@@ -249,43 +245,73 @@ const BusinessCalculator = () => {
               </SelectTrigger>
               <SelectContent>
                 {Object.entries(serviceNames).map(([key, name]) => {
-                const available = isServiceAvailable(key as ServiceCategory, propertyType);
-                return <SelectItem key={key} value={key} disabled={!available}>
+                  const available = isServiceAvailable(key as ServiceCategory, propertyType);
+                  return (
+                    <SelectItem key={key} value={key} disabled={!available}>
                       {name} {!available && '(недоступно)'}
-                    </SelectItem>;
-              })}
+                    </SelectItem>
+                  );
+                })}
               </SelectContent>
             </Select>
           </div>
 
-          {renderInputField()}
+          {renderSpecialServiceSelect()}
 
-          {rates[serviceCategory][propertyType] > 0 && <div className="mt-4 p-4 bg-brand-beige/10 rounded-lg">
+          <div className="space-y-2">
+            <Label htmlFor="area">Площадь помещения (м²)</Label>
+            <Input 
+              id="area" 
+              type="number" 
+              min="10" 
+              value={area} 
+              onChange={e => setArea(Number(e.target.value))} 
+            />
+          </div>
+
+          {rates[serviceCategory][propertyType] && (
+            <div className="mt-4 p-4 bg-brand-beige/10 rounded-lg">
               <div className="flex items-center justify-between">
                 <span className="text-sm">
-                  Тариф: <span className="font-medium">{rates[serviceCategory][propertyType]} ₽/м²</span>
+                  Тариф: <span className="font-medium">
+                    {rates[serviceCategory][propertyType]!.min === rates[serviceCategory][propertyType]!.max 
+                      ? `${rates[serviceCategory][propertyType]!.min} ₽/м²`
+                      : `${rates[serviceCategory][propertyType]!.min}–${rates[serviceCategory][propertyType]!.max} ₽/м²`
+                    }
+                  </span>
                 </span>
               </div>
-            </div>}
+            </div>
+          )}
 
           <Button onClick={calculatePrice} className="btn-primary w-full mt-6">
             Рассчитать стоимость
           </Button>
 
-          {price !== null && <div className="mt-6 p-4 bg-brand-green/10 rounded-lg text-center animate-fade-in">
-              <p className="text-lg font-semibold">Примерная стоимость: от {price.toLocaleString()} ₽</p>
+          {priceRange && (
+            <div className="mt-6 p-4 bg-brand-green/10 rounded-lg text-center animate-fade-in">
+              <p className="text-lg font-semibold">
+                Примерная стоимость: {priceRange.min === priceRange.max 
+                  ? `от ${priceRange.min.toLocaleString()} ₽`
+                  : `${priceRange.min.toLocaleString()}–${priceRange.max.toLocaleString()} ₽`
+                }
+              </p>
               <p className="text-sm text-brand-gray/80 mt-2">
                 Для получения точной стоимости и специальных условий свяжитесь с менеджером
               </p>
-            </div>}
+            </div>
+          )}
 
-          {rates[serviceCategory][propertyType] === 0 && <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-center">
+          {!rates[serviceCategory][propertyType] && (
+            <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-center">
               <p className="text-sm text-yellow-800">
                 Данная услуга не применима для выбранного типа помещения
               </p>
-            </div>}
+            </div>
+          )}
         </div>
       </CardContent>
     </Card>;
 };
+
 export default UnifiedCalculator;
