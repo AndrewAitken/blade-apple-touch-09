@@ -7,7 +7,7 @@ const Footer = () => {
       behavior: "smooth"
     });
   };
-  return <footer className="bg-brand-gray py-12">
+  return <footer className="bg-brand-gray py-12 bg-neutral-900">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="md:col-span-2">
