@@ -40,41 +40,30 @@ const About = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-          <div className="order-2 lg:order-1 animate-fade-in">
-            <div className="aspect-square max-w-md mx-auto lg:mx-0 relative">
-              <div className="absolute inset-0 grid grid-cols-2 gap-4">
-                <div className="bg-brand-beige rounded-2xl"></div>
-                <div className="bg-brand-green/30 rounded-2xl"></div>
-                <div className="bg-brand-green/30 rounded-2xl"></div>
-                <div className="bg-brand-beige rounded-2xl"></div>
-              </div>
-              <div className="absolute inset-8 bg-white rounded-2xl shadow-lg p-6 flex items-center justify-center">
-                <div className="text-center">
-                  <img src="/lovable-uploads/8a80a736-9474-4dcb-840c-ac39b2518b81.png" alt="WashUp Logo" className="w-56 h-56 mx-auto mb-4" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="order-1 lg:order-2 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16">
+          <div className="animate-fade-in">
             <h3 className="text-2xl font-bold mb-6">Наше оборудование и технологии</h3>
             <p className="text-lg mb-6">
               WashUp — это команда профессионалов, специализирующихся на уборке коммерческих объектов. 
               Мы используем современное оборудование и профессиональную химию для достижения идеального результата.
             </p>
-            <p className="text-lg mb-8">
+            <p className="text-lg">
               Наша специализация — промышленная и коммерческая уборка с использованием передовых технологий 
               и безопасных для окружающей среды средств.
             </p>
+          </div>
 
-            <div className="grid grid-cols-1 gap-4 mb-8">
+          <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            <div className="grid grid-cols-1 gap-4">
               {benefitsData.map((benefit, index) => (
-                <div key={index} className="flex items-start gap-4">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-brand-green/20 flex items-center justify-center">
-                    <Check size={12} className="text-brand-green" />
+                <div 
+                  key={index} 
+                  className="bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition-all duration-300 flex items-start gap-4"
+                >
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-brand-green/20 flex items-center justify-center">
+                    <Check size={14} className="text-brand-green" />
                   </span>
-                  <span>{benefit}</span>
+                  <span className="text-sm font-medium">{benefit}</span>
                 </div>
               ))}
             </div>
