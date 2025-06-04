@@ -5,34 +5,34 @@ import { ArrowRight } from "lucide-react";
 
 const portfolioImages = [
   {
-    src: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3",
-    alt: "Уборка квартиры после генеральной уборки",
-    category: "Жилые помещения"
+    src: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3",
+    alt: "Уборка современного офисного пространства",
+    category: "Офисные помещения"
   },
   {
-    src: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3",
-    alt: "Клининг офисного пространства",
-    category: "Бизнес-помещения"
+    src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3",
+    alt: "Клининг складского комплекса",
+    category: "Складские помещения"
   },
   {
-    src: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?ixlib=rb-4.0.3",
-    alt: "Чистая кухня после профессиональной уборки",
-    category: "Кухни"
+    src: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3",
+    alt: "Уборка торгового центра",
+    category: "Торговые центры"
   },
   {
-    src: "https://images.unsplash.com/photo-1584622781564-1d987f7333c1?ixlib=rb-4.0.3",
-    alt: "Санузел после дезинфицирующей уборки",
-    category: "Санузлы"
+    src: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3",
+    alt: "Клининг ресторана после работы",
+    category: "Рестораны"
   },
   {
-    src: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3",
-    alt: "Химчистка мягкой мебели",
-    category: "Химчистка"
+    src: "https://images.unsplash.com/photo-1586227740560-8cf2732c1531?ixlib=rb-4.0.3",
+    alt: "Машинная уборка производственных полов",
+    category: "Производственные объекты"
   },
   {
-    src: "https://images.unsplash.com/photo-1595846519845-68e298c2edd8?ixlib=rb-4.0.3",
-    alt: "Мытьё окон и фасадов",
-    category: "Окна и фасады"
+    src: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3",
+    alt: "Уборка бизнес-центра",
+    category: "Бизнес-центры"
   }
 ];
 
@@ -44,7 +44,7 @@ const Portfolio = () => {
           <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Наши работы</h2>
             <p className="text-lg text-brand-gray/80 max-w-2xl">
-              Примеры профессиональной уборки от команды WashUp
+              Примеры профессиональной уборки коммерческих объектов от команды WashUp
             </p>
           </div>
           <Button variant="ghost" className="hidden md:flex items-center gap-2 mt-4 md:mt-0">

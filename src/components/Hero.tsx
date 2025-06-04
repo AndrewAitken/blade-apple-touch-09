@@ -1,14 +1,19 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const Hero = () => {
-  const scrollToNextSection = () => {
-    // Scroll to the calculator section
+  const scrollToCalculator = () => {
     const calculatorSection = document.getElementById("calculator");
     if (calculatorSection) {
       calculatorSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById("about");
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -41,20 +46,20 @@ const Hero = () => {
               WashUp - профессиональный клининг в Рязани
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-xl">
-              Профессиональная экологичная уборка для вашего дома, офиса или коммерческого помещения. Минималистичный подход — максимальная чистота.
+              Уборка производственных объектов, складов, торговых и бизнес-центров, ресторанов и офисов. Соблюдаем технологии, используем профессиональную химию.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button 
                 className="btn-primary btn-hover-effect group"
-                onClick={scrollToNextSection}
+                onClick={scrollToCalculator}
               >
                 Рассчитать стоимость
               </Button>
               <Button 
                 className="btn-secondary group bg-white/10 border-white text-white hover:bg-white/20"
-                onClick={scrollToNextSection}
+                onClick={scrollToAbout}
               >
-                Узнать больше
+                О нас
               </Button>
             </div>
           </div>

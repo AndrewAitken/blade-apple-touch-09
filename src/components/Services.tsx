@@ -1,27 +1,27 @@
 
 import React from "react";
-import { Home, Building, Building2, Car } from "lucide-react";
+import { Building, Building2, Wrench, ShoppingCart } from "lucide-react";
 
 const servicesData = [
   {
-    title: "Уборка квартир",
-    description: "Генеральная и поддерживающая уборка жилых помещений с использованием экологичных средств",
-    icon: Home
-  },
-  {
-    title: "Уборка офисов",
-    description: "Регулярная и разовая уборка офисных помещений любой площади",
+    title: "Склады и производственные объекты",
+    description: "Профессиональная уборка промышленных помещений: удаление пыли, загрязнений, машинная мойка полов (бетон, топпинг), обработка стеллажей и зон погрузки.",
     icon: Building
   },
   {
-    title: "Коммерческая уборка",
-    description: "Профессиональная уборка торговых центров, ресторанов и других коммерческих объектов",
+    title: "Бизнес и торговые центры",
+    description: "Ежедневная и глубокая уборка холлов, офисов, лифтов, стеклянных фасадов, санузлов и общих зон. Дезинфекция и поддержание идеальной чистоты для клиентов и арендаторов.",
     icon: Building2
   },
   {
-    title: "Химчистка",
-    description: "Чистка мягкой мебели, ковров и текстильных поверхностей с помощью современного оборудования",
-    icon: Car
+    title: "Уборка после строительства и ремонта",
+    description: "Удаление строительной пыли, цемента, клея, остатков стройматериалов. Подготовка объекта к сдаче или запуску проекта.",
+    icon: Wrench
+  },
+  {
+    title: "Ритейл & HoReCa",
+    description: "Комплексная уборка торговых залов, бутиков, супермаркетов и точек общественного питания. Поддержание чистоты без остановки работы.",
+    icon: ShoppingCart
   }
 ];
 
@@ -32,11 +32,11 @@ const Services = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Наши услуги</h2>
           <p className="text-lg text-brand-gray/80 max-w-2xl mx-auto">
-            Мы предлагаем полный комплекс клининговых услуг для вашего комфорта
+            Мы предлагаем полный комплекс услуг для запуска вашего помещения в работу, или поддерживать ваш комфорт и чистоту.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {servicesData.map((service, index) => (
             <div 
               key={index} 
@@ -46,7 +46,7 @@ const Services = () => {
               <div className="w-12 h-12 bg-brand-beige/30 rounded-full flex items-center justify-center mb-4">
                 <service.icon className="text-brand-green" size={24} />
               </div>
-              <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+              <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
               <p className="text-brand-gray/80">{service.description}</p>
             </div>
           ))}
