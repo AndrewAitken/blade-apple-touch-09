@@ -77,15 +77,17 @@ const Portfolio = () => {
                 className="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-110"
               />
               
-              {/* Текст без фона, прижатый к низу */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 transform transition-transform duration-300 group-hover:-translate-y-2">
-                <span className="text-white text-sm mb-2 block drop-shadow-lg">{image.category}</span>
-                <h4 className="text-white text-xl font-semibold mb-2 drop-shadow-lg">{image.title}</h4>
-                
-                {/* Описание, которое появляется при наведении */}
-                <p className="text-white/90 text-sm leading-relaxed opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 drop-shadow-lg">
-                  {image.description}
-                </p>
+              {/* Градиентный фон и текст, прижатый к низу */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
+                <div className="absolute bottom-0 left-0 right-0 p-6 transform transition-transform duration-300 group-hover:-translate-y-2">
+                  <span className="text-white/90 text-sm mb-2 block">{image.category}</span>
+                  <h4 className="text-white text-xl font-semibold mb-2">{image.title}</h4>
+                  
+                  {/* Описание, которое появляется при наведении */}
+                  <p className="text-white/90 text-sm leading-relaxed opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                    {image.description}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
