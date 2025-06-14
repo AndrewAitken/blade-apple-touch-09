@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -25,7 +26,7 @@ const portfolioImages = [
     description: "Регулярная уборка общественных зон и торговых площадей"
   },
   {
-    src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3",
+    src: "/lovable-uploads/0ffbb3c5-c949-4092-ab18-b7e45aaf5f04.png",
     alt: "Профессиональная уборка ресторана",
     category: "Рестораны",
     title: "Клининг ресторана после работы",
