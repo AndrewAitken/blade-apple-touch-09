@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -40,7 +39,11 @@ const formSchema = z.object({
   comment: z.string().min(1, "Комментарий обязателен"),
 });
 
-const CTAForm = () => {
+interface CTAFormProps {
+  onSuccess?: () => void;
+}
+
+const CTAForm = ({ onSuccess }: CTAFormProps) => {
   const { toast } = useToast();
   
   const form = useForm({
@@ -74,7 +77,7 @@ const CTAForm = () => {
         },
         body: JSON.stringify({
           chat_id: "393097451",
-          text: `🧼 Новая заявка CleanHub (CTA):\nИмя: ${data.name}\nТелефон: ${phoneForSubmission}\nEmail: ${data.email || "Не указан"}\nКомментарий: ${data.comment}`
+          text: `🧼 Новая заявка CleanHub (Калькулятор):\nИмя: ${data.name}\nТелефон: ${phoneForSubmission}\nEmail: ${data.email || "Не указан"}\nКомментарий: ${data.comment}`
         })
       });
 
@@ -85,6 +88,7 @@ const CTAForm = () => {
       });
 
       form.reset();
+      onSuccess?.();
     } catch (error) {
       console.error("Ошибка при отправке заявки:", error);
       toast({

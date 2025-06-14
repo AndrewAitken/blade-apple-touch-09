@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Calculator } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -10,6 +9,8 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Slider } from "@/components/ui/slider";
 import { useState } from "react";
+import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { CTAForm } from "@/components/ui/cta-form";
 
 // B2B Calculator Types
 type ServiceCategory = 'regular' | 'general' | 'renovation' | 'machine' | 'windows' | 'special';
@@ -63,6 +64,7 @@ const BusinessCalculator = () => {
   const [propertyType, setPropertyType] = useState<PropertyType>('office');
   const [area, setArea] = useState<number>(100);
   const [priceRange, setPriceRange] = useState<PriceRange | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   // Тарифы для разных категорий услуг и типов помещений (₽/м²)
   const rates: Record<ServiceCategory, RateInfo> = {
@@ -185,6 +187,15 @@ const BusinessCalculator = () => {
     setPriceRange({ min: minPrice, max: maxPrice });
   };
 
+  const handleCalculateClick = () => {
+    calculatePrice();
+    setIsDialogOpen(true);
+  };
+
+  const handleFormSuccess = () => {
+    setIsDialogOpen(false);
+  };
+
   const isServiceAvailable = (service: ServiceCategory, property: PropertyType) => {
     return rates[service][property] !== null;
   };
@@ -284,23 +295,42 @@ const BusinessCalculator = () => {
             </div>
           )}
 
-          <Button onClick={calculatePrice} className="btn-primary w-full mt-6">
-            Рассчитать стоимость
-          </Button>
-
-          {priceRange && (
-            <div className="mt-6 p-4 bg-brand-green/10 rounded-lg text-center animate-fade-in">
-              <p className="text-lg font-semibold">
-                Примерная стоимость: {priceRange.min === priceRange.max 
-                  ? `от ${priceRange.min.toLocaleString()} ₽`
-                  : `${priceRange.min.toLocaleString()}–${priceRange.max.toLocaleString()} ₽`
-                }
-              </p>
-              <p className="text-sm text-brand-gray/80 mt-2">
-                Для получения точной стоимости и специальных условий свяжитесь с менеджером
-              </p>
-            </div>
-          )}
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <DialogTrigger asChild>
+              <Button onClick={handleCalculateClick} className="btn-primary w-full mt-6">
+                Рассчитать стоимость
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[600px]">
+              <DialogHeader>
+                <DialogTitle>Расчет стоимости уборки</DialogTitle>
+                <DialogDescription>
+                  {priceRange ? (
+                    <div className="mt-4 p-4 bg-brand-green/10 rounded-lg text-center">
+                      <p className="text-lg font-semibold">
+                        Примерная стоимость: {priceRange.min === priceRange.max 
+                          ? `от ${priceRange.min.toLocaleString()} ₽`
+                          : `${priceRange.min.toLocaleString()}–${priceRange.max.toLocaleString()} ₽`
+                        }
+                      </p>
+                      <p className="text-sm text-brand-gray/80 mt-2">
+                        Для получения точной стоимости оставьте заявку
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-center">
+                      <p className="text-sm text-yellow-800">
+                        Данная услуга не применима для выбранного типа помещения
+                      </p>
+                    </div>
+                  )}
+                </DialogDescription>
+              </DialogHeader>
+              <div className="mt-6">
+                <CTAForm onSuccess={handleFormSuccess} />
+              </div>
+            </DialogContent>
+          </Dialog>
 
           {!rates[serviceCategory][propertyType] && (
             <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-center">
