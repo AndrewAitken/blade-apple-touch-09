@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -39,7 +40,7 @@ const portfolioImages = [
     description: "Специализированная очистка с соблюдением промышленных стандартов"
   },
   {
-    src: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3",
+    src: "/lovable-uploads/4d57582a-6160-4d30-a56c-9928b02b9fef.png",
     alt: "Уборка бизнес-центра",
     category: "Бизнес-центры",
     title: "Генеральная уборка бизнес-центра",
