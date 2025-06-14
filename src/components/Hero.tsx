@@ -19,11 +19,11 @@ const Hero = () => {
 
   return (
     <section className="relative overflow-hidden py-20 md:py-32">
-      {/* Используем новое изображение офисного пространства как фон */}
+      {/* Используем новое изображение склада как фон */}
       <div 
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: "url('/lovable-uploads/73542c8c-acfb-4955-a168-fd57451411e8.png')",
+          backgroundImage: "url('/lovable-uploads/541572cd-9bf6-4d49-bb4a-b68e4d446a8b.png')",
           backgroundSize: "cover",
           backgroundPosition: "center"
         }}
@@ -31,8 +31,8 @@ const Hero = () => {
       
       {/* Добавляем резервное изображение, которое загрузится, если возникнут проблемы с фоном */}
       <img 
-        src="/lovable-uploads/73542c8c-acfb-4955-a168-fd57451411e8.png"
-        alt="Современный офис для профессиональной уборки WashUp"
+        src="/lovable-uploads/541572cd-9bf6-4d49-bb4a-b68e4d446a8b.png"
+        alt="Современный склад для профессиональной уборки WashUp"
         className="absolute inset-0 w-full h-full object-cover z-0 opacity-0"
       />
       
