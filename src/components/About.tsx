@@ -31,7 +31,7 @@ const equipmentData = [
 
 const About = () => {
   return (
-    <section id="about" className="section bg-brand-green/10">
+    <section id="about" className="section bg-brand-green-lighter/30">
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">О компании WashUp</h2>
@@ -60,7 +60,7 @@ const About = () => {
                   key={index} 
                   className="bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition-all duration-300 flex items-start gap-4"
                 >
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-brand-green/20 flex items-center justify-center">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-brand-green-lighter/60 flex items-center justify-center">
                     <Check size={14} className="text-brand-green" />
                   </span>
                   <span className="text-sm font-medium">{benefit}</span>
@@ -78,7 +78,7 @@ const About = () => {
               className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="w-12 h-12 bg-brand-green/20 rounded-full flex items-center justify-center mb-4">
+              <div className="w-12 h-12 bg-brand-green-lighter/50 rounded-full flex items-center justify-center mb-4">
                 <equipment.icon className="text-brand-green" size={24} />
               </div>
               <h4 className="text-xl font-semibold mb-3">{equipment.title}</h4>
