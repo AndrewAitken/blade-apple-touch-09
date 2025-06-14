@@ -66,7 +66,7 @@ export default {
         'sand-beige': '#D6CFC1',
         'concrete-g': '#3B3B3BB',
         // Исправленные цвета (для корректного отображения)
-        'brand-green': '#A868BA',
+        'brand-green': '#22c55e',
         'brand-pink': '#F53FEF', 
         'brand-beige': '#D6CFC1',
         'brand-gray': '#3B3B3B',
