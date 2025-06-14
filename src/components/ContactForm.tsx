@@ -121,7 +121,7 @@ const ContactForm = () => {
                 <h4 className="font-semibold mb-2">Email:</h4>
                 <a 
                   href="mailto:washup.info@mail.ru?subject=Заявка на клининг"
-                  className="text-lg text-blue-600 hover:text-blue-800 hover:underline cursor-pointer transition-colors"
+                  className="text-lg text-brand-green hover:text-brand-green/80 hover:underline cursor-pointer transition-colors"
                 >
                   washup.info@mail.ru
                 </a>
