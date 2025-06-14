@@ -145,10 +145,6 @@ const Pricing = () => {
             </AccordionContent>
           </AccordionItem>
         </Accordion>
-
-        <div className="mt-12 text-center">
-          <CTAForm />
-        </div>
       </div>
     </section>
   );
