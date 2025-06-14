@@ -43,7 +43,7 @@ const Services = () => {
               className="service-card animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="w-12 h-12 bg-brand-beige/30 rounded-full flex items-center justify-center mb-4">
+              <div className="w-12 h-12 bg-brand-green/10 rounded-full flex items-center justify-center mb-4">
                 <service.icon className="text-brand-green" size={24} />
               </div>
               <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
