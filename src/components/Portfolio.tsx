@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -48,9 +49,6 @@ const Portfolio = () => {
               Примеры профессиональной уборки коммерческих объектов от команды WashUp
             </p>
           </div>
-          <Button variant="ghost" className="hidden md:flex items-center gap-2 mt-4 md:mt-0">
-            Смотреть все работы <ArrowRight size={16} />
-          </Button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -74,12 +72,6 @@ const Portfolio = () => {
                 </div>
               </div>
             </div>)}
-        </div>
-
-        <div className="mt-8 text-center md:hidden">
-          <Button variant="ghost" className="flex items-center gap-2 mx-auto">
-            Смотреть все работы <ArrowRight size={16} />
-          </Button>
         </div>
       </div>
     </section>;
