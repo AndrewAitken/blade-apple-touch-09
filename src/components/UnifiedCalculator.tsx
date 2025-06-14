@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Calculator } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -250,21 +251,31 @@ const BusinessCalculator = () => {
 
           <div className="space-y-3">
             <Label htmlFor="serviceCategory">Категория услуги</Label>
-            <Select value={serviceCategory} onValueChange={(value: ServiceCategory) => setServiceCategory(value)}>
-              <SelectTrigger id="serviceCategory">
-                <SelectValue placeholder="Выберите категорию" />
-              </SelectTrigger>
-              <SelectContent>
-                {Object.entries(serviceNames).map(([key, name]) => {
-                  const available = isServiceAvailable(key as ServiceCategory, propertyType);
-                  return (
-                    <SelectItem key={key} value={key} disabled={!available}>
-                      {name} {!available && '(недоступно)'}
-                    </SelectItem>
-                  );
-                })}
-              </SelectContent>
-            </Select>
+            <div className="space-y-2">
+              {Object.entries(serviceNames).map(([key, name]) => {
+                const available = isServiceAvailable(key as ServiceCategory, propertyType);
+                const isSelected = serviceCategory === key;
+                return (
+                  <div 
+                    key={key} 
+                    className={`p-3 rounded-lg border-2 cursor-pointer transition-all duration-200 ${
+                      isSelected 
+                        ? 'bg-brand-green text-white border-brand-green' 
+                        : available 
+                          ? 'bg-white border-gray-200 hover:border-brand-green/50 hover:bg-brand-green/5' 
+                          : 'bg-gray-50 border-gray-200 text-gray-400 cursor-not-allowed'
+                    }`}
+                    onClick={() => available && setServiceCategory(key as ServiceCategory)}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="font-medium">{name}</span>
+                      {isSelected && <span className="text-sm">✓</span>}
+                      {!available && <span className="text-xs">(недоступно)</span>}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           {renderSpecialServiceSelect()}
