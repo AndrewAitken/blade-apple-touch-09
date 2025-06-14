@@ -10,7 +10,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Slider } from "@/components/ui/slider";
 import { useState } from "react";
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { CTAForm } from "@/components/ui/cta-form";
+import CTAForm from "@/components/CTAForm";
 
 // B2B Calculator Types
 type ServiceCategory = 'regular' | 'general' | 'renovation' | 'machine' | 'windows' | 'special';
