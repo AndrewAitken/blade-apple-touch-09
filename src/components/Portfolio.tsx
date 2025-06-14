@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -33,7 +32,7 @@ const portfolioImages = [
     description: "Глубокая очистка кухни, зала и обезжиривание оборудования"
   },
   {
-    src: "https://images.unsplash.com/photo-1586227740560-8cf2732c1531?ixlib=rb-4.0.3",
+    src: "/lovable-uploads/30476c8b-8e80-430a-86a3-1593c8c1025a.png",
     alt: "Машинная уборка производственных полов",
     category: "Производственные объекты",
     title: "Уборка производственного цеха",
