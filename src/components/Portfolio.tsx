@@ -1,11 +1,10 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 const portfolioImages = [
   {
-    src: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3",
+    src: "/lovable-uploads/0a23f6ed-5f09-462c-b10a-1e8e2e1fe936.png",
     alt: "Уборка современного офисного пространства",
     category: "Офисные помещения",
     title: "Клининг офиса после работы",
