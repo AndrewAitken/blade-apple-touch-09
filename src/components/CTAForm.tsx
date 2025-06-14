@@ -106,16 +106,14 @@ const CTAForm = ({ onSuccess }: CTAFormProps) => {
   };
 
   return (
-    <div className="bg-white rounded-2xl p-8 shadow-lg max-w-2xl mx-auto">
-      <div className="text-center mb-6">
-        <h3 className="text-2xl font-bold mb-2">Получить расчет стоимости</h3>
-        <p className="text-brand-gray/80">
-          Оставьте заявку и получите индивидуальное предложение для вашего объекта
-        </p>
-      </div>
+    <div className="text-center mb-6">
+      <h3 className="text-2xl font-bold mb-2">Получить расчет стоимости</h3>
+      <p className="text-brand-gray/80">
+        Оставьте заявку и получите индивидуальное предложение для вашего объекта
+      </p>
       
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-6">
           <FormField 
             control={form.control} 
             name="name" 
