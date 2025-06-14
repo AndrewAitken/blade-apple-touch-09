@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -106,85 +107,78 @@ const CTAForm = ({ onSuccess }: CTAFormProps) => {
   };
 
   return (
-    <div className="text-center mb-6">
-      <h3 className="text-2xl font-bold mb-2">Получить расчет стоимости</h3>
-      <p className="text-brand-gray/80">
-        Оставьте заявку и получите индивидуальное предложение для вашего объекта
-      </p>
-      
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-6">
-          <FormField 
-            control={form.control} 
-            name="name" 
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Имя*</FormLabel>
-                <FormControl>
-                  <Input placeholder="Иван Иванов" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )} 
-          />
-          
-          <FormField 
-            control={form.control} 
-            name="phone" 
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Телефон*</FormLabel>
-                <FormControl>
-                  <Input 
-                    placeholder="+7 (999) 123-45-67" 
-                    value={field.value}
-                    onChange={(e) => handlePhoneChange(e, field.onChange)}
-                    onBlur={field.onBlur}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )} 
-          />
-          
-          <FormField 
-            control={form.control} 
-            name="email" 
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input placeholder="example@mail.ru" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )} 
-          />
-          
-          <FormField 
-            control={form.control} 
-            name="comment" 
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Комментарий*</FormLabel>
-                <FormControl>
-                  <Textarea 
-                    placeholder="Расскажите о вашем объекте, площади, типе уборки..." 
-                    className="min-h-[100px]"
-                    {...field} 
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )} 
-          />
-          
-          <Button type="submit" className="btn-primary w-full">
-            <Send size={18} className="mr-2" /> Связаться с нами
-          </Button>
-        </form>
-      </Form>
-    </div>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <FormField 
+          control={form.control} 
+          name="name" 
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Имя*</FormLabel>
+              <FormControl>
+                <Input placeholder="Иван Иванов" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )} 
+        />
+        
+        <FormField 
+          control={form.control} 
+          name="phone" 
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Телефон*</FormLabel>
+              <FormControl>
+                <Input 
+                  placeholder="+7 (999) 123-45-67" 
+                  value={field.value}
+                  onChange={(e) => handlePhoneChange(e, field.onChange)}
+                  onBlur={field.onBlur}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )} 
+        />
+        
+        <FormField 
+          control={form.control} 
+          name="email" 
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input placeholder="example@mail.ru" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )} 
+        />
+        
+        <FormField 
+          control={form.control} 
+          name="comment" 
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Комментарий*</FormLabel>
+              <FormControl>
+                <Textarea 
+                  placeholder="Расскажите о вашем объекте, площади, типе уборки..." 
+                  className="min-h-[100px]"
+                  {...field} 
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )} 
+        />
+        
+        <Button type="submit" className="btn-primary w-full">
+          <Send size={18} className="mr-2" /> Связаться с нами
+        </Button>
+      </form>
+    </Form>
   );
 };
 
