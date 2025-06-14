@@ -1,6 +1,7 @@
 import React from "react";
-import { Check } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import CTAForm from "./CTAForm";
+
 const mainServices = [{
   service: "Регулярная уборка",
   unit: "м²",
@@ -73,8 +74,10 @@ const additionalServices = [{
   price: "от 200",
   description: "Пыль, жир, налёт."
 }];
+
 const Pricing = () => {
-  return <section id="pricing" className="section bg-brand-beige/20">
+  return (
+    <section id="pricing" className="section bg-brand-beige/20">
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Цены на услуги</h2>
@@ -144,18 +147,11 @@ const Pricing = () => {
         </Accordion>
 
         <div className="mt-12 text-center">
-          <div className="bg-white rounded-2xl p-8 shadow-lg max-w-2xl mx-auto">
-            <div className="flex items-start justify-start mb-4">
-              <Check className="text-brand-green mr-2" size={24} />
-              <span className="text-lg font-semibold">Индивидуальный подход</span>
-            </div>
-            <p className="text-brand-gray/80">
-              Каждый объект уникален. Для получения точной стоимости и специальных условий 
-              свяжитесь с нашим менеджером по телефону или оставьте заявку.
-            </p>
-          </div>
+          <CTAForm />
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Pricing;
