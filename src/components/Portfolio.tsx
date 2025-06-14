@@ -18,7 +18,7 @@ const portfolioImages = [
     description: "Комплексная очистка складских площадей с использованием спецтехники"
   },
   {
-    src: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3",
+    src: "/lovable-uploads/406d90d6-b3a5-46d3-a844-0d8044dff34e.png",
     alt: "Уборка торгового центра",
     category: "Торговые центры",
     title: "Клининг торгового центра",
