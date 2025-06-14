@@ -2,7 +2,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-
 const portfolioImages = [{
   src: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3",
   alt: "Уборка современного офисного пространства",
@@ -40,23 +39,9 @@ const portfolioImages = [{
   title: "Генеральная уборка бизнес-центра",
   description: "Комплексная уборка всех зон с мытьем фасадов и окон"
 }];
-
 const Portfolio = () => {
-  return <section id="portfolio" className="section relative overflow-hidden">
-      {/* Новое фоновое изображение */}
-      <div 
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: "url('/lovable-uploads/a8499d3c-1c0d-411d-a5eb-34fd50682009.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center"
-        }}
-      ></div>
-      
-      {/* Оверлей для лучшей читаемости */}
-      <div className="absolute inset-0 bg-white/90 z-10"></div>
-      
-      <div className="container mx-auto relative z-20">
+  return <section id="portfolio" className="section bg-white">
+      <div className="container mx-auto">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Направления работ</h2>
@@ -91,5 +76,4 @@ const Portfolio = () => {
       </div>
     </section>;
 };
-
 export default Portfolio;
