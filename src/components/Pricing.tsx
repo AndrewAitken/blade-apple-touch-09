@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import CTAForm from "./CTAForm";
@@ -95,7 +94,7 @@ const Pricing = () => {
             </AccordionTrigger>
             <AccordionContent className="px-0 pb-0">
               <div className="overflow-x-auto">
-                <table className="w-full">
+                <table className="w-full min-w-[240px]">
                   <thead className="bg-brand-green text-white">
                     <tr>
                       <th className="px-6 py-4 text-left">Услуга</th>
@@ -124,7 +123,7 @@ const Pricing = () => {
             </AccordionTrigger>
             <AccordionContent className="px-0 pb-0">
               <div className="overflow-x-auto">
-                <table className="w-full">
+                <table className="w-full min-w-[240px]">
                   <thead className="bg-brand-green text-white">
                     <tr>
                       <th className="px-6 py-4 text-left">Услуга</th>
