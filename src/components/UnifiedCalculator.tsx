@@ -1,12 +1,11 @@
 import React from "react";
-import { Calculator } from "lucide-react";
+import { Calculator, Check } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Slider } from "@/components/ui/slider";
 import { useState } from "react";
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -238,14 +237,26 @@ const BusinessCalculator = () => {
         <div className="space-y-6">
           <div className="space-y-3">
             <Label>Тип помещения</Label>
-            <RadioGroup value={propertyType} onValueChange={(value: PropertyType) => setPropertyType(value)} className="grid grid-cols-1 md:grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
               {Object.entries(propertyNames).map(([key, name]) => (
-                <div key={key} className="flex items-center space-x-2">
-                  <RadioGroupItem value={key} id={`property-${key}`} />
-                  <Label htmlFor={`property-${key}`} className="cursor-pointer text-sm">{name}</Label>
-                </div>
+                <button
+                  key={key}
+                  onClick={() => setPropertyType(key as PropertyType)}
+                  className={`
+                    flex items-center space-x-2 p-3 rounded-lg text-sm text-left transition-all duration-200
+                    ${propertyType === key 
+                      ? 'bg-brand-green text-white' 
+                      : 'bg-white border border-gray-300 hover:bg-gray-100 hover:border-transparent'
+                    }
+                  `}
+                >
+                  {propertyType === key && (
+                    <Check size={16} className="text-white flex-shrink-0" />
+                  )}
+                  <span className="flex-1">{name}</span>
+                </button>
               ))}
-            </RadioGroup>
+            </div>
           </div>
 
           <div className="space-y-3">
