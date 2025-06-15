@@ -19,8 +19,8 @@ const Navbar = () => {
           </a>
         </div>
 
-        {/* Десктопное меню */}
-        <nav className="hidden md:flex items-center space-x-8">
+        {/* Десктопное меню - показываем только на экранах lg и больше (1024px+) */}
+        <nav className="hidden lg:flex items-center space-x-8">
           <a href="/#services" className="relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-brand-green after:origin-bottom-right after:transition-all after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left hover:text-brand-green transition-colors">Услуги</a>
           <a href="/#pricing" className="relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-brand-green after:origin-bottom-right after:transition-all after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left hover:text-brand-green transition-colors">Цены</a>
           <a href="/#calculator" className="relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-brand-green after:origin-bottom-right after:transition-all after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left hover:text-brand-green transition-colors">Калькулятор</a>
@@ -28,8 +28,8 @@ const Navbar = () => {
           <a href="/#about" className="relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-brand-green after:origin-bottom-right after:transition-all after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left hover:text-brand-green transition-colors">О нас</a>
         </nav>
 
-        {/* Кнопки быстрой связи в десктопе */}
-        <div className="hidden md:flex items-center gap-2">
+        {/* Кнопки быстрой связи в десктопе - показываем только на экранах lg и больше */}
+        <div className="hidden lg:flex items-center gap-2">
           <a href="https://wa.me/79209500808" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-[#25D366]/10 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[#25D366] hover:text-white hover:scale-110" aria-label="WhatsApp">
             <MessagesSquare size={20} />
           </a>
@@ -42,15 +42,15 @@ const Navbar = () => {
           </Button>
         </div>
 
-        {/* Мобильное меню */}
-        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+        {/* Мобильное меню - показываем на экранах меньше lg (меньше 1024px) */}
+        <button className="lg:hidden" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Мобильная навигация */}
+      {/* Мобильная навигация - показываем на экранах меньше lg */}
       {isOpen && (
-        <div className="md:hidden absolute top-16 left-0 right-0 bg-white shadow-md p-4 z-50">
+        <div className="lg:hidden absolute top-16 left-0 right-0 bg-white shadow-md p-4 z-50">
           <nav className="flex flex-col space-y-4">
             <a href="/#services" className="hover:text-brand-green transition-colors" onClick={() => setIsOpen(false)}>Услуги</a>
             <a href="/#pricing" className="hover:text-brand-green transition-colors" onClick={() => setIsOpen(false)}>Цены</a>
