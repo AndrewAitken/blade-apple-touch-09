@@ -43,11 +43,11 @@ const Hero = () => {
       <div className="container mx-auto relative z-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white opacity-0 animate-fade-in" 
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-white opacity-0 animate-fade-in" 
                 style={{ animationDuration: "0.8s", animationDelay: "0.6s", animationFillMode: "both" }}>
               WashUp - профессиональный клининг в Рязани
             </h1>
-            <p className="text-lg md:text-xl text-white/90 max-w-xl opacity-0 animate-fade-in" 
+            <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-xl opacity-0 animate-fade-in" 
                style={{ animationDuration: "0.8s", animationDelay: "0.9s", animationFillMode: "both" }}>
               Уборка производственных объектов, складов, торговых и бизнес-центров, ресторанов и офисов. Соблюдаем технологии, используем профессиональную химию.
             </p>
