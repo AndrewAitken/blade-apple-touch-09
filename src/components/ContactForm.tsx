@@ -66,7 +66,7 @@ const ContactForm = () => {
       console.log("Отправка формы:", submissionData);
 
       // Отправка в Telegram
-      await fetch("https://api.telegram.org/bot7252849088:AAHCQfLWz-YyxY227f15HhJGzqvjydDe_cY/sendMessage", {
+      await fetch("https://api.telegram.org/bot7695770010:AAF9lGI8e056FxGYUgg5x-Gq_zZokOZaBuc/sendMessage", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

@@ -71,7 +71,7 @@ const CTAForm = ({ onSuccess }: CTAFormProps) => {
       console.log("Отправка заявки в CTA форму:", submissionData);
 
       // Отправка в Telegram бот @wash_up_cleaning_bot
-      await fetch("https://api.telegram.org/bot7252849088:AAHCQfLWz-YyxY227f15HhJGzqvjydDe_cY/sendMessage", {
+      await fetch("https://api.telegram.org/bot7695770010:AAF9lGI8e056FxGYUgg5x-Gq_zZokOZaBuc/sendMessage", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
