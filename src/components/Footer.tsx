@@ -35,7 +35,7 @@ const Footer = () => {
             <h4 className="text-white font-medium mb-4">Контакты</h4>
             <ul className="space-y-2">
               <li className="text-brand-beige/80">8 920 950 08 08</li>
-              <li className="text-brand-beige/80">info@clean-hub.ru</li>
+              <li className="text-brand-beige/80">washup.info@mail.ru</li>
               <li className="text-brand-beige/80">г. Рязань, ул. Соборная, д. 15А</li>
             </ul>
           </div>
